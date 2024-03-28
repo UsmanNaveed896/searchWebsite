@@ -1,24 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Routess from "./routess";
+// import VirtualOffice from './pages/virtualOffice/virtualOfficeSec'
+import PropertyDetails from './pages/buy-sell-homes/propertydetails/property-details'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routess />
+      {/* <PropertyDetails/> */}
+    </>
+
   );
 }
 
