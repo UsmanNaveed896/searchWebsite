@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Img from "../../assets/Hero-Photoroom.png";
 import MultiCarousel from "react-multi-carousel";
 import HomepagePopup from "./homepagepopup";
@@ -24,6 +24,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
+import Popup from "../../components/popup/popup";
 const Homepage = ({ locale }) => {
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
@@ -61,6 +62,21 @@ const Homepage = ({ locale }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+  const [showPopup, setShowPopup] = useState(true);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  useEffect(() => {
+    // Set showPopup to true after a short delay to demonstrate the animation
+    const timeout = setTimeout(() => {
+      setShowPopup(true);
+    }, 500);
+
+    // Clear the timeout to avoid memory leaks
+    return () => clearTimeout(timeout);
+  }, []);
+  console.log(showPopup,"popup")
   return (
     <>
       {/* <HomepagePopup/>
@@ -75,6 +91,9 @@ const Homepage = ({ locale }) => {
             : messagesAr
         }
       >
+          <div className=" flex justify-center items-center">
+      {showPopup && <Popup onClose={handleClosePopup} />}
+    </div>
         <div className="homepage relative">
           <div className="images flex gap-6 mt-12 px-12 pb-4">
             <div className="img relative">
