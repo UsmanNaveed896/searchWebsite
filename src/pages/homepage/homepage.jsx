@@ -31,7 +31,7 @@ const Homepage = ({ locale }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -231,166 +231,165 @@ const Homepage = ({ locale }) => {
                   >
                      <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
-
                     <div className="relative">
                       <div className="absolute">
-                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
-                          <h1 className="text-[12px] ">
+                        <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[16px] ">
                             {" "}
                             <FormattedMessage id="Limited-Time" />
                           </h1>
                         </div>
-                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                        <h1 className="font-semibold text-[18px] mt-1 ml-1">
                           {" "}
                           <FormattedMessage id="Get-Special-Offer" /> <br></br>
                           <FormattedMessage id="up-to" />
-                          <span className="text-[16px] font-bold font-semibold ">
+                          <span className="text-[18px] font-bold font-semibold ">
                             40 %
                           </span>{" "}
                         </h1>
-                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                        <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
-                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                        <div className="absolute top-[11rem] right-[-10rem]">
+                          <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
                         </div>
                       </div>
-                      <img className="w-[97%]" src={Img1} alt="abc" />
+                      <img className="w-[95%]" src={Img1} alt="abc" />
                     </div>
                   </MultiCarousel>
                 </div>
@@ -400,7 +399,7 @@ const Homepage = ({ locale }) => {
                 {" "}
                 <FormattedMessage id="Live Streaming" />
               </p>
-                <div className="flex justify-between  mb-3">
+                {/* <div className="flex justify-between  mb-3">
                   <p className="font-bold text-[12px]">
                     {" "}
                     <FormattedMessage id="live" />
@@ -409,7 +408,7 @@ const Homepage = ({ locale }) => {
                     {" "}
                     <FormattedMessage id="View-All" />
                   </p>
-                </div>
+                </div> */}
                 <div className="flex justify-center mt-4">
                   <video width="640" height="360" controls>
                     <source src="video.mp4" type="video/mp4" />
