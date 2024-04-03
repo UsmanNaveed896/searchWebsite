@@ -31,12 +31,12 @@ const Homepage = ({ locale }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 3, // optional, default to 1.
+      items: 4,
+      slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      items: 3,
       slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
@@ -217,7 +217,7 @@ const Homepage = ({ locale }) => {
             </div>
           </div>
           <div className="flex justify-evenly">
-            <div className="container max-w-[1000px] mt-16">
+            <div className="container max-w-[1200px] mt-16">
               <p className="font-bold text-[28px] text-[#1B8693] pb-2">
                 {" "}
                 <FormattedMessage id="Featured Ad" />
@@ -229,7 +229,7 @@ const Homepage = ({ locale }) => {
                     showDots={true}
                     removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
                   >
-                    <div className="relative">
+                     <div className="relative">
                       <div className="absolute">
                         <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
                           <h1 className="text-[12px] ">
@@ -254,7 +254,7 @@ const Homepage = ({ locale }) => {
                           </span>
                         </div>
                       </div>
-                      <img className="w-[300px]" src={Img1} alt="abc" />
+                      <img className="w-[97%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
@@ -281,7 +281,7 @@ const Homepage = ({ locale }) => {
                           </span>
                         </div>
                       </div>
-                      <img className="w-[300px]" src={Img1} alt="abc" />
+                      <img className="w-[97%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
@@ -308,7 +308,7 @@ const Homepage = ({ locale }) => {
                           </span>
                         </div>
                       </div>
-                      <img className="w-[300px]" src={Img1} alt="abc" />
+                      <img className="w-[97%]" src={Img1} alt="abc" />
                     </div>
                     <div className="relative">
                       <div className="absolute">
@@ -335,7 +335,34 @@ const Homepage = ({ locale }) => {
                           </span>
                         </div>
                       </div>
-                      <img className="w-[300px]" src={Img1} alt="abc" />
+                      <img className="w-[97%]" src={Img1} alt="abc" />
+                    </div>
+                    <div className="relative">
+                      <div className="absolute">
+                        <div className="head  px-3 w-[100px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
+                          <h1 className="text-[12px] ">
+                            {" "}
+                            <FormattedMessage id="Limited-Time" />
+                          </h1>
+                        </div>
+                        <h1 className="font-semibold text-[14px] mt-1 ml-1">
+                          {" "}
+                          <FormattedMessage id="Get-Special-Offer" /> <br></br>
+                          <FormattedMessage id="up-to" />
+                          <span className="text-[16px] font-bold font-semibold ">
+                            40 %
+                          </span>{" "}
+                        </h1>
+                        <h1 className="text-[12px] mt-6  font-semibold ml-1">
+                          <FormattedMessage id="All-washing-services-available" />
+                        </h1>
+                        <div className="absolute bottom-[-1.5rem] right-[-2rem]">
+                          <span className="bg-[#1F5E7C] px-2 py-1 rounded-xl text-white text-center font-bold text-[12px]">
+                            <FormattedMessage id="Claim" />
+                          </span>
+                        </div>
+                      </div>
+                      <img className="w-[97%]" src={Img1} alt="abc" />
                     </div>
 
                     <div className="relative">
@@ -363,12 +390,16 @@ const Homepage = ({ locale }) => {
                           </span>
                         </div>
                       </div>
-                      <img className="w-[300px]" src={Img1} alt="abc" />
+                      <img className="w-[97%]" src={Img1} alt="abc" />
                     </div>
                   </MultiCarousel>
                 </div>
               </div>
               <div className="mt-16 rounded-xl py-4">
+              <p className="font-bold text-[28px] mb-6 text-[#1B8693] pb-2">
+                {" "}
+                <FormattedMessage id="Live Streaming" />
+              </p>
                 <div className="flex justify-between  mb-3">
                   <p className="font-bold text-[12px]">
                     {" "}
