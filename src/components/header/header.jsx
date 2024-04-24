@@ -96,7 +96,7 @@ const Header = ({ setLocale, locale }) => {
                   </div>
                 </li>
 
-                <li className="cursor-pointer hover:font-bold">
+                <li className="cursor-pointer hover:font-bold" onClick={()=>navigate('/car-di')}>
                   <FormattedMessage id="Automobile" />
                 </li>
                 <li
