@@ -8,10 +8,26 @@ import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import GoogleMap from "../../components/googlemap/google-map";
 import GoogleMaps from "../../components/googlemap/google-map";
-
+import MultiCarousel from "react-multi-carousel";
 
 const Buyhomes = ({ locale }) => {
-  
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
   return (
     <>
       <IntlProvider
@@ -104,15 +120,38 @@ const Buyhomes = ({ locale }) => {
                   </div>
                 </div>
                 <div className="card mt-6">
-                  <div class="mt-4 border px-2 py-2 shadow rounded-xl flex items-start">
+                  <div
+                    class="max-w-sm mt-4 rounded-xl"
+                    // style={{ boxShadow: shadow }}
+                  >
                     <div className="">
-                      <img className="" src={Img2} />
+                      <div className="flex justify-center">
+                        <MultiCarousel
+                          responsive={responsive}
+                          showDots={true}
+                          removeArrowOnDeviceType={[
+                            "tablet",
+                            "mobile",
+                            "desktop",
+                          ]}
+                        >
+                          <div>
+                            <img className="h-[400px]" src={Img2} />
+                          </div>
+                          <div>
+                            <img className="h-[400px]" src={Img1} />
+                          </div>
+                        </MultiCarousel>
+                      </div>
                     </div>
-                    <div class="py-2 px-4  text-[14px]">
-                      <h5 class="mb-1  font-semibold tracking-tight">
-                        <FormattedMessage id="furnished.apartment" />
+                    <div class="p-5">
+                      <h5 class="mb-1 text-[16px] font-bold tracking-tight">
+                        IDR 200.000.000
                       </h5>
-                      <div class="star-rating flex gap-1 mt-6 items-center">
+                      <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
+                        <FormattedMessage id="car.detail" />
+                      </h5>
+                      <div class="star-rating flex gap-1 mt-2 items-center">
                         <svg
                           class="star-icon w-5 h-5"
                           fill="#f7c300"
@@ -121,23 +160,48 @@ const Buyhomes = ({ locale }) => {
                           <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
                         </svg>
                         <span class="rating-text text-[12px]">
-                          4.5 (415 <FormattedMessage id="reviews" />)
+                          4.5 (415 reviews)
                         </span>
                       </div>
-                      <h5 class=" tracking-tight mt-6 ">
-                        <FormattedMessage id="guests.2" /> |{" "}
-                        <FormattedMessage id="bedroom.1" /> |{" "}
-                        <FormattedMessage id="bathroom.2" />{" "}
+                      <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
+                        Sell
                       </h5>
-                      <h5 class=" tracking-tight mt-6 ">
-                        <FormattedMessage id="entire.studio" />{" "}
-                      </h5>
+                    </div>
+                    <div className="flex justify-between px-5 mb-2">
+                      <div className="flex gap-2 items-center">
+                        <div>
+                          <img src={Img2} alt="abc" />
+                          <p className="font-bold text-[12px]">
+                            <FormattedMessage id="Bedroom" />
+                          </p>
+                        </div>
+                        <p className="font-bold text-[12px]">1</p>
+                      </div>
+
+                      <div className="flex gap-2 items-center">
+                        <div>
+                          <img src={Img2} alt="abc" />
+                          <p className="font-bold text-[12px]">
+                            <FormattedMessage id="Washroom" />
+                          </p>
+                        </div>
+                        <p className="font-bold text-[12px]">2</p>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <div>
+                          <img src={Img2} alt="abc" />
+                          <p className="font-bold text-[12px]">
+                            <FormattedMessage id="home.area" />
+                          </p>
+                        </div>
+                        <p className="font-bold text-[12px]">360m</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="column2">
-               <GoogleMaps/>
+                <GoogleMaps />
               </div>
             </div>
           </div>

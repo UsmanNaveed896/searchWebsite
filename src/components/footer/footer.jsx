@@ -18,30 +18,30 @@ const Footer = ({ locale }) => {
       <div className="flex justify-center">
         <div className="container max-w-[1000px] mt-16">
           <div className="bg-white px-6 py-4 ">
-            <div className="flex justify-center gap-6 items-end">
-              <div className="price border-r border-[#1B8693] border-r-2 px-6">
-                <select className="mt-3 font-semibold text-[20px] ">
+            <div className="flex justify-center md:gap-6 gap-0 items-end">
+              <div className="price border-r border-[#1B8693] border-r-2 md:px-6 px-2">
+                <select className="mt-3 font-semibold md:text-[20px] text-[12px] ">
                   <option>
                     <FormattedMessage id="real.estate" />
                   </option>
                 </select>
               </div>
-              <div className="price border-r border-[#1B8693] border-r-2 px-6">
-                <select className="mt-3 font-semibold text-[20px] ">
+              <div className="price border-r border-[#1B8693] border-r-2 md:px-6 px-2">
+                <select className="mt-3 font-semibold md:text-[20px] text-[12px] ">
                   <option>
                     <FormattedMessage id="cars.cars" />
                   </option>
                 </select>
               </div>
-              <div className="price border-r border-[#1B8693] border-r-2 px-6">
-                <select className="mt-3 font-semibold text-[20px] ">
+              <div className="price border-r border-[#1B8693] border-r-2 md:px-6 px-2">
+                <select className="mt-3 font-semibold md:text-[20px] text-[12px] ">
                   <option>
                     <FormattedMessage id="Furniture" />
                   </option>
                 </select>
               </div>
-              <div className="price border-r border-[#1B8693] border-r-2 px-6">
-                <select className="mt-3 font-semibold text-[20px] ">
+              <div className="price border-r border-[#1B8693] border-r-2 md:px-6 px-2">
+                <select className="mt-3 font-semibold md:text-[20px] text-[12px] ">
                   <option>
                     <FormattedMessage id="Mortgage.Rates" />
                   </option>
@@ -53,7 +53,7 @@ const Footer = ({ locale }) => {
             <p className="font-bold text-[38px] text-[#1B8693]">
               <FormattedMessage id="install.app" />{" "}
             </p>
-            <div className="flex justify-center gap-16 mt-12">
+            <div className="flex justify-center flex-wrap gap-16 mt-12">
               <img src={Img} alt="group" />
               <img src={Img1} alt="group" />
             </div>
@@ -66,10 +66,10 @@ const Footer = ({ locale }) => {
         style={{ backgroundImage: `url(${Img2})` }}
       >
         <div className="flex justify-center">
-          <div className="container max-w-[1075px] mt-16">
-            <div className="grid grid-cols-2">
+          <div className="container max-w-[1075px] md:mt-16 mt-2">
+            <div className="grid md:grid-cols-2 grid-cols-1 px-4 md:px-0">
               <div className="column1">
-                <h1 className="text-white font-bold text-[40px] leading-[40px] mt-16">
+                <h1 className="text-white font-bold md:text-[40px] text-[20px] md:leading-[40px] leading-[30px] mt-16">
                   <FormattedMessage id="need.consult" />
                   <br></br>
                   <FormattedMessage id="contact.us" /> <br></br>
@@ -153,7 +153,7 @@ const Footer = ({ locale }) => {
           </div>
         </div>
       </div>
-      <div className="h-[200px] px-4">
+      {/* <div className="h-[200px] px-4">
         <div className="flex justify-between items-center mt-12">
           <div>
             <img src={Img3} alt="search" />
@@ -223,7 +223,7 @@ const Footer = ({ locale }) => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
     </IntlProvider>
   );
 };

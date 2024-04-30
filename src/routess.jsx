@@ -21,7 +21,7 @@ const Routess = () => {
                 <Route exact path='/' element={<Homepage locale={locale} />} />
                 <Route exact path='/virtualoffice' element={<HomeImprovement locale={locale}/>} />
                 <Route exact path='/buyhome' element={<Buyhomes locale={locale}/>} />
-                {/* <Route exact path='/homeimprovement' element={<HomeImprovement locale={locale}/>} /> */}
+                <Route exact path='/homeimprovement' element={<HomeImprovement locale={locale}/>} />
                 <Route exact path='/property-management' element={<PropertyManagement locale={locale}/>} />
                 <Route exact path='/about-Company' element={<AboutCompany locale={locale}/>} />
                 <Route exact path='/car-di' element={<CarDi  locale={locale} />} />
