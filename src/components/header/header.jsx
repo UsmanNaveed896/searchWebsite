@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Img from "../../assets/Group 143.png";
-import Img1 from "../../assets/Group 81.png";
+import Img1 from "../../assets/bot.png";
 import { useNavigate } from "react-router-dom";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
-const Header = ({ setLocale, locale }) => {
+const Header = ({ setLocale, locale,setShowPopup }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,6 +27,9 @@ const Header = ({ setLocale, locale }) => {
         }
       >
         <div className="">
+          <div className="fixed bottom-0 right-0  z-[999] cursor-pointer" onClick={()=>setShowPopup(true)}>
+          <img className="h-[90px] " src={Img1} alt="bot" />
+          </div>
           <div className="px-8 py-4">
             <div className="list flex  items-center justify-between font-semibold text-[#1E1E1E]">
               <div>

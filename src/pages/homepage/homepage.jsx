@@ -17,7 +17,6 @@ import Img11 from "../../assets/Rectangle 8.png";
 import Img12 from "../../assets/Rectangle 14.png";
 import Img13 from "../../assets/Rectangle 468.png";
 import Img14 from "../../assets/Rectangle 469.png";
-
 import OurServices from "./ourservices";
 import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
@@ -25,7 +24,7 @@ import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
-const Homepage = ({ locale }) => {
+const Homepage = ({ locale,showPopup, setShowPopup}) => {
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
@@ -62,21 +61,10 @@ const Homepage = ({ locale }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const [showPopup, setShowPopup] = useState(true);
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-  useEffect(() => {
-    // Set showPopup to true after a short delay to demonstrate the animation
-    const timeout = setTimeout(() => {
-      setShowPopup(true);
-    }, 500);
 
-    // Clear the timeout to avoid memory leaks
-    return () => clearTimeout(timeout);
-  }, []);
-  console.log(showPopup, "popup");
+ 
+
   return (
     <>
       {/* <HomepagePopup/>
@@ -91,9 +79,7 @@ const Homepage = ({ locale }) => {
             : messagesAr
         }
       >
-        <div className=" flex justify-center items-center">
-          {/* {showPopup && <Popup onClose={handleClosePopup} />} */}
-        </div>
+       
         <div className="homepage relative">
           <div className="images flex md:flex-nowrap flex-wrap justify-center gap-6 mt-12 px-12 pb-4">
             <div className="img relative">
@@ -126,7 +112,7 @@ const Homepage = ({ locale }) => {
           </div>
 
           <div
-            className=" bg-cover h-screen pb-16"
+            className=" bg-cover pb-16"
             style={{ backgroundImage: `url(${Img})` }}
           >
             <div className="flex justify-evenly">
@@ -143,7 +129,7 @@ const Homepage = ({ locale }) => {
                   veniam.
                 </p>
                 <div className="bg-white px-6 py-4 mt-16">
-                  <div className="flex justify-center gap-6 items-center md:grid-cols-3 grid grid-cols-1">
+                  <div className="flex justify-center items-center md:grid-cols-4 grid grid-cols-1">
                     <div className="ss border-r border-black px-6">
                       <div className="price  md:px-6 px-0">
                         <p className="font-bold ">
