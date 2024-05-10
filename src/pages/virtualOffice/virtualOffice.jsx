@@ -20,7 +20,7 @@ const VirtualOffice = ({ locale }) =>  {
                         <br></br> <FormattedMessage id="all.differences" /></h1>
                     <p className='mt-2 text-[#FFFFFF] font-Poppins text-[16px]'>"Lorem ipsum dolor sit amet, consectetur <br></br> adipiscing elit, sed do eiusmod tempor incididunt <br></br> ut labore et dolore magna aliqua.
                     </p>
-                    <button className='text-[#FFFFFF] bg-[#1F5E7C] font-Poppins px-2 py-1 rounded-lg mt-8 ml-14'>
+                    <button className='text-[#FFFFFF] bg-[#1F5E7C] font-Poppins px-2 py-1 rounded-lg mt-8 md:ml-14 ml-0'>
                         <FormattedMessage id="connect.agent" />
                         </button>
                 </div>
