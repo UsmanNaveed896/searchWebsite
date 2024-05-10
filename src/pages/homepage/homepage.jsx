@@ -17,7 +17,6 @@ import Img11 from "../../assets/Rectangle 8.png";
 import Img12 from "../../assets/Rectangle 14.png";
 import Img13 from "../../assets/Rectangle 468.png";
 import Img14 from "../../assets/Rectangle 469.png";
-
 import OurServices from "./ourservices";
 import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
@@ -25,7 +24,7 @@ import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
-const Homepage = ({ locale }) => {
+const Homepage = ({ locale,showPopup, setShowPopup}) => {
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
@@ -62,21 +61,10 @@ const Homepage = ({ locale }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const [showPopup, setShowPopup] = useState(true);
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-  useEffect(() => {
-    // Set showPopup to true after a short delay to demonstrate the animation
-    const timeout = setTimeout(() => {
-      setShowPopup(true);
-    }, 500);
 
-    // Clear the timeout to avoid memory leaks
-    return () => clearTimeout(timeout);
-  }, []);
-  console.log(showPopup,"popup")
+ 
+
   return (
     <>
       {/* <HomepagePopup/>
@@ -91,11 +79,9 @@ const Homepage = ({ locale }) => {
             : messagesAr
         }
       >
-          <div className=" flex justify-center items-center">
-      {showPopup && <Popup onClose={handleClosePopup} />}
-    </div>
+       
         <div className="homepage relative">
-          <div className="images flex gap-6 mt-12 px-12 pb-4">
+          <div className="images flex md:flex-nowrap flex-wrap justify-center gap-6 mt-12 px-12 pb-4">
             <div className="img relative">
               <img src={Img12} alt="rectangle" />
             </div>
@@ -126,26 +112,26 @@ const Homepage = ({ locale }) => {
           </div>
 
           <div
-            className=" bg-cover h-screen pb-16"
+            className=" bg-cover pb-16"
             style={{ backgroundImage: `url(${Img})` }}
           >
             <div className="flex justify-evenly">
-              <div className="container max-w-[1000px] mt-32">
-                <h1 className="font-bold text-[50px] leading-[60px] text-white">
+              <div className="container max-w-[1000px] mt-32 md:px-0 px-4">
+                <h1 className="font-bold md:text-[50px] text-[25px] md:leading-[60px] leading-[30px] text-white">
                   <FormattedMessage id="home.title1" />
                   <br></br>
                   <FormattedMessage id="home.title2" />
                 </h1>
-                <p className="mt-12 text-white text-[22px]">
+                <p className="md:mt-12 mt-2 text-white md:text-[22px] text-sm">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   <br></br>
                   Sed do eiusmod tempor incididunt ut Ut enim <br></br> ad minim
                   veniam.
                 </p>
                 <div className="bg-white px-6 py-4 mt-16">
-                  <div className="flex justify-center gap-6 items-center">
+                  <div className="flex justify-center items-center md:grid-cols-4 grid grid-cols-1">
                     <div className="ss border-r border-black px-6">
-                      <div className="price  px-6">
+                      <div className="price  md:px-6 px-0">
                         <p className="font-bold ">
                           {" "}
                           <FormattedMessage id="Location" />
@@ -193,7 +179,7 @@ const Homepage = ({ locale }) => {
                 <div className="flex gap-4 mt-16">
                   <div className="rounded-full bg-white h-16 w-16 text-center">
                     <i
-                      class="fa fa-home text-[26px] mt-1.5"
+                      class="fa fa-home md:text-[26px] text-[10px] mt-1.5"
                       aria-hidden="true"
                     ></i>
                     <p className="text-[12px] font-bold">+500k</p>
@@ -216,7 +202,7 @@ const Homepage = ({ locale }) => {
               </div>
             </div>
           </div>
-          <div className="flex justify-evenly">
+          <div className="flex justify-evenly px-4 md:px-0">
             <div className="container max-w-[1200px] mt-16">
               <p className="font-bold text-[28px] text-[#1B8693] pb-2">
                 {" "}
@@ -229,7 +215,7 @@ const Homepage = ({ locale }) => {
                     showDots={true}
                     removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
                   >
-                     <div className="relative">
+                    <div className="relative">
                       <div className="absolute">
                         <div className="head  px-3 w-[120px] rounded-full bg-white border border-[#1E8E94] text-[#1E8E94] mt-1 ml-1">
                           <h1 className="text-[16px] ">
@@ -275,7 +261,7 @@ const Homepage = ({ locale }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute md:top-[11rem] top-[9rem] md:right-[-10rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -395,20 +381,11 @@ const Homepage = ({ locale }) => {
                 </div>
               </div>
               <div className="mt-16 rounded-xl py-4">
-              <p className="font-bold text-[28px] mb-6 text-[#1B8693] pb-2">
-                {" "}
-                <FormattedMessage id="Live Streaming" />
-              </p>
-                {/* <div className="flex justify-between  mb-3">
-                  <p className="font-bold text-[12px]">
-                    {" "}
-                    <FormattedMessage id="live" />
-                  </p>
-                  <p className="text-[#1B8693] text-[12px] font-semibold">
-                    {" "}
-                    <FormattedMessage id="View-All" />
-                  </p>
-                </div> */}
+                <p className="font-bold text-[28px] mb-6 text-[#1B8693] pb-2">
+                  {" "}
+                  <FormattedMessage id="Live Streaming" />
+                </p>
+
                 <div className="flex justify-center mt-4">
                   <video width="640" height="360" controls>
                     <source src="video.mp4" type="video/mp4" />
@@ -448,7 +425,7 @@ const Homepage = ({ locale }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6">
+              <div className="grid md:grid-cols-3 grid-cols-1  gap-6">
                 <div
                   class="max-w-sm mt-4 rounded-xl"
                   style={{ boxShadow: shadow }}
@@ -527,7 +504,7 @@ const Homepage = ({ locale }) => {
                   <FormattedMessage id="dream.property.seller" />
                 </p>
               </div>
-              <div className="flex gap-6 mt-16">
+              <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mt-16">
                 <div
                   class="max-w-sm mt-4 rounded-xl"
                   style={{ boxShadow: shadow }}
@@ -718,9 +695,9 @@ const Homepage = ({ locale }) => {
                   </div>
                 </div>
               </div>
-              <p className="text-[#1B8693] text-center text-[15px] font-bold mt-4">
+              {/* <p className="text-[#1B8693] text-center text-[15px] font-bold mt-4">
                 <FormattedMessage id="more" />
-              </p>
+              </p> */}
 
               {/*Cars For You Card */}
               <div className=" text-center mt-16  mb-3">
@@ -731,7 +708,7 @@ const Homepage = ({ locale }) => {
                   <FormattedMessage id="dream.car.seller" />
                 </p>
               </div>
-              <div className="flex gap-6 mt-16">
+              <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
                 <div
                   class="max-w-sm mt-4 rounded-xl"
                   style={{ boxShadow: shadow }}

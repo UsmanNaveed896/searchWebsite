@@ -11,14 +11,14 @@ const Ourservices = ({ locale }) => {
     return (
         <>
           <IntlProvider locale={locale} messages={locale === 'en' ? messagesEn : locale === 'fr' ? messagesFr : messagesAr}>
-            <div className='bg-[#ecf4fd] pb-12'>
+            <div className='bg-[#ecf4fd] pb-12 px-4 md:px-0'>
                 <div className='flex justify-evenly'>
                     <div className='container max-w-[1000px] mt-12  '>
                         <div className=' text-center mt-16  mb-3'>
                             <p className='font-bold text-[28px] text-[#1B8693]'><FormattedMessage id="our.services" /></p>
                             <p className=' font-semibold mb-6'><FormattedMessage id="services.text1" /><br></br><FormattedMessage id="services.text2" /></p>
                         </div>
-                        <div className='flex gap-4'>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                             <div class="max-w-sm mt-4 rounded-xl bg-[#1B8693]"
                                 style={{ boxShadow: shadow }} >
                                 <div className=''>

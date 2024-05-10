@@ -5,9 +5,9 @@ const Popup = ({ onClose }) => {
   return (
     <motion.div
     initial={{ y: '100%' }}
-    animate={{ y: 0 }}
+    animate={{ y: '10%' }}
     transition={{ duration: 0.7 }}
-    className="absolute top-16 left-[30%] right-0 bg-[#404040] p-4 shadow-md rounded-xl z-[999] max-w-[500px]"
+    className="fixed top-16 left-[30%] right-0 bg-[#404040] p-4 shadow-md rounded-xl z-[999] max-w-[500px]"
     style={{ backgroundColor: 'rgba(64, 64, 64, 0.7)' }} // Adjust the opacity here
   >
     <div className="flex justify-end">
