@@ -9,6 +9,7 @@ import { messagesAr } from "../../localization/messagesAr";
 import GoogleMap from "../../components/googlemap/google-map";
 import GoogleMaps from "../../components/googlemap/google-map";
 import MultiCarousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Buyhomes = ({ locale }) => {
   const responsive = {
