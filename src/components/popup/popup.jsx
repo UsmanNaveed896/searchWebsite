@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion';
 import Img from '../../assets/qwq.png'
+import SpeechRecognize from '../speechtotext/speechRecognize';
 const Popup = ({ onClose }) => {
+  const [speech,setSpeech]=useState();
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [speech]);
+  console.log(speech,"trans")
   return (
     <motion.div
     initial={{ y: '100%' }}
     animate={{ y: '10%' }}
     transition={{ duration: 0.7 }}
-    className="fixed top-16 left-[30%] right-0 bg-[#404040] p-4 shadow-md rounded-xl z-[999] max-w-[500px]"
+    className="fixed top-16 md:left-[30%] left-[5%] right-0 bg-[#404040] p-4 shadow-md rounded-xl z-[999] md:max-w-[500px] max-w-[350px]"
     style={{ backgroundColor: 'rgba(64, 64, 64, 0.7)' }} // Adjust the opacity here
   >
     <div className="flex justify-end">
@@ -23,7 +33,18 @@ const Popup = ({ onClose }) => {
     </div>
     <div className='flex justify-center  items-start'>
       <img className='h-[300px]' src={Img} alt='girl' />
-      <input className='rounded px-2 py-1 bg-white mt-16 text-[12px] focus:outline-none' placeholder='Type Something...' type='text' />
+      <textarea
+        ref={textareaRef}
+        className='rounded px-2 py-1 bg-white mt-16 text-[12px] focus:outline-none'
+        placeholder='Say Something...'
+        type='text'
+        value={speech}
+        readOnly
+      />
+      <div className='mt-[74px] ml-6'>
+      <SpeechRecognize speech={speech} setSpeech={setSpeech}/>
+      </div>
+     
       {/* <i className="text-[34px]  text-white fa fa-comments-o  cursor-pointer hover:font-bold" aria-hidden="true"></i> */}
     </div>
   </motion.div>

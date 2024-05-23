@@ -26,7 +26,7 @@ const Header = ({ setLocale, locale,setShowPopup }) => {
             : messagesAr
         }
       >
-        <div className="">
+        <div className="md:block hidden">
           <div className="fixed bottom-0 right-0  z-[999] cursor-pointer" onClick={()=>setShowPopup(true)}>
           <img className="h-[90px] " src={Img1} alt="bot" />
           </div>
@@ -44,7 +44,7 @@ const Header = ({ setLocale, locale,setShowPopup }) => {
                 className="flex items-center"
                 style={{
                   justifyContent: locale === "fr" ? "space-around" : "",
-                  gap: locale !== "fr" ? "4rem" : "",
+                  gap: "4rem" ,
                 }}
               >
                 <li className="cursor-pointer hover:font-bold">
@@ -182,7 +182,7 @@ const Header = ({ setLocale, locale,setShowPopup }) => {
                             <button
                               id="hs-dropdown-hover-event"
                               type="button"
-                              className="hs-dropdown-toggle py-3 px-4 inline-flex text-white items-center gap-x-2 text-sm   hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none  text-black dark:border-gray-700  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                              className="hs-dropdown-toggle py-3 px-4 inline-flex text-white items-center gap-x-2 text-sm  disabled:opacity-50 disabled:pointer-events-none  text-black dark:border-gray-700  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                               onMouseEnter={toggleDropdown}
                               onMouseLeave={toggleDropdown}
                             >

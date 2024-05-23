@@ -414,9 +414,7 @@ const CarDi = ({ locale }) => {
                       <FormattedMessage id="car.detail" />
                     </h5>
                     <div class="star-rating flex gap-1 mt-2 items-center">
-                      {/* <svg class="star-icon w-5 h-5" fill="#f7c300" viewBox="0 0 20 20">
-                                            <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                                        </svg> */}
+                   
                       <span class="rating-text text-[12px]"></span>
                     </div>
                   </div>
