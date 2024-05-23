@@ -39,7 +39,7 @@ const HomeImprovement = ({ locale }) => {
               elit, sed do eiusmod tempor incididunt <br></br> ut labore et
               dolore magna aliqua.
             </p>
-            <button className="text-[#FFFFFF] bg-[#1F5E7C] font-Poppins px-2 py-1 rounded-lg mt-8 ml-14">
+            <button className="text-[#FFFFFF] bg-[#1F5E7C] font-Poppins px-2 py-1 rounded-lg mt-8 md:ml-14 ml-0">
               <FormattedMessage id="connect.agent" />
             </button>
           </div>
@@ -49,7 +49,7 @@ const HomeImprovement = ({ locale }) => {
             className="bg-[#1F5E7C] px-2 py-2 mt-4 w-[95%] rounded-lg mb-10"
             style={{ boxShadow: shadow }}
           >
-            <div className="flex justify-center gap-32 items-center pb-12">
+            <div className="flex justify-center md:flex-row flex-col gap-32 items-center pb-12">
               <div className="ss  px-6">
                 <p className="font-medium text-[white] text-[16] font-Poppins">
                   <FormattedMessage id="Location" />
@@ -102,27 +102,27 @@ const HomeImprovement = ({ locale }) => {
 
         <div className="main  ">
           <div className="flex items-center justify-between mt-8 mb-8 px-12 ">
-            <h1 className="font-bold text-[20px] font-Poppins text-[#000000]">
+            <h1 className="font-bold md:text-[20px] text-[12px] font-Poppins text-[#000000]">
               <FormattedMessage id="Virtual-Office" />
             </h1>
-            <h1 className="font-bold text-[20px] font-Poppins text-[#000000]">
+            <h1 className="font-bold md:text-[20px] text-[12px] font-Poppins text-[#000000]">
               <FormattedMessage id="Location" />
             </h1>
-            <h1 className="font-bold text-[20px] font-Poppins text-[#000000]">
+            <h1 className="font-bold md:text-[20px] text-[12px] font-Poppins text-[#000000]">
               <FormattedMessage id="Client Review" />
             </h1>
           </div>
           <div className="px-6 mt-8 pb-16 ">
             <div
-              className="flex px-4 py-4 justify-between rounded-lg cursor-pointer hover:border-[#1F5E7C] hover:border"
+              className="flex px-4 py-4 md:justify-between justify-start rounded-lg cursor-pointer hover:border-[#1F5E7C] hover:border"
               style={{ boxShadow: shadow }}
               onClick={()=>navigate('/about-Company')}
             >
               <div
-                className=" w-[372px]  flex gap-2 items-center rounded-lg px-2 py-2"
+                className=" md:w-[372px]  flex gap-2 items-center rounded-lg px-2 py-2"
                 style={{ boxShadow: shadow }}
               >
-                <img src={Img1} alt="company name" />
+                <img className="" src={Img1} alt="company name" />
                 <div className="">
                   <h2 className="text-[#1F5E7C] text-[16px] font-Poppins font-bold">
                     <FormattedMessage id="Company.Name" />

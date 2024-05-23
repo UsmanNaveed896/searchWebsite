@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Img from "../../assets/Hero-Photoroom.png";
 import MultiCarousel from "react-multi-carousel";
+import Carousel from "react-multi-carousel";
 import HomepagePopup from "./homepagepopup";
 import "react-multi-carousel/lib/styles.css";
 import Img1 from "../../assets/Rectangle 22.png";
@@ -24,7 +25,7 @@ import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
-const Homepage = ({ locale,showPopup, setShowPopup}) => {
+const Homepage = ({ locale, showPopup, setShowPopup }) => {
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
@@ -52,18 +53,15 @@ const Homepage = ({ locale,showPopup, setShowPopup}) => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 3,
+      items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 3,
+      items: 2,
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-
-
- 
 
   return (
     <>
@@ -79,36 +77,41 @@ const Homepage = ({ locale,showPopup, setShowPopup}) => {
             : messagesAr
         }
       >
-       
         <div className="homepage relative">
-          <div className="images flex md:flex-nowrap flex-wrap justify-center gap-6 mt-12 px-12 pb-4">
-            <div className="img relative">
-              <img src={Img12} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img13} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img14} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img12} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img13} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img14} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img12} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img13} alt="rectangle" />
-            </div>
-            <div className="img relative">
-              <img src={Img14} alt="rectangle" />
-            </div>
+          <div className="images mt-12 px-12 pb-4">
+            <Carousel
+              responsive={newresponsive}
+              showDots={true}
+              removeArrowOnDeviceType={["tablet", "mobile",]}
+            >
+              <div className="img ">
+                <img src={Img12} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img13} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img14} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img12} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img13} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img14} alt="rectangle" />
+              </div>
+              <div className="img ">
+                <img src={Img12} alt="rectangle" />
+              </div>
+              <div className="img relative">
+                <img src={Img13} alt="rectangle" />
+              </div>
+              <div className="img relative">
+                <img src={Img14} alt="rectangle" />
+              </div>
+            </Carousel>
           </div>
 
           <div
