@@ -18,6 +18,7 @@ import Img11 from "../../assets/Rectangle 8.png";
 import Img12 from "../../assets/Rectangle 14.png";
 import Img13 from "../../assets/Rectangle 468.png";
 import Img14 from "../../assets/Rectangle 469.png";
+import Video from "../../assets/videos/1.mp4";
 import OurServices from "./ourservices";
 import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
@@ -48,7 +49,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
   const newresponsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 7,
+      items: 5,
       slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
@@ -82,13 +83,37 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
             <Carousel
               responsive={newresponsive}
               showDots={true}
-              removeArrowOnDeviceType={["tablet", "mobile",]}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
             >
-              <div className="img ">
-                <img src={Img12} alt="rectangle" />
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
-              <div className="img ">
-                <img src={Img13} alt="rectangle" />
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <div className="img ">
                 <img src={Img14} alt="rectangle" />
@@ -96,17 +121,11 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img ">
                 <img src={Img12} alt="rectangle" />
               </div>
-              <div className="img ">
-                <img src={Img13} alt="rectangle" />
-              </div>
-              <div className="img ">
-                <img src={Img14} alt="rectangle" />
-              </div>
-              <div className="img ">
-                <img src={Img12} alt="rectangle" />
-              </div>
-              <div className="img relative">
-                <img src={Img13} alt="rectangle" />
+              <div className="img">
+                <video className="rounded-xl h-[250px]"  controls>
+                  <source src={Video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <div className="img relative">
                 <img src={Img14} alt="rectangle" />
