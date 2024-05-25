@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Img from "../../assets/Hero-Photoroom.png";
 import MultiCarousel from "react-multi-carousel";
 import Carousel from "react-multi-carousel";
@@ -16,7 +16,7 @@ import Img9 from "../../assets/Rectangle 10.png";
 import Img10 from "../../assets/Rectangle 5.png";
 import Img11 from "../../assets/Rectangle 8.png";
 import Img12 from "../../assets/Rectangle 14.png";
-import Img13 from "../../assets/Rectangle 468.png";
+import Img13 from "../../assets/Screenshot(45).png";
 import Img14 from "../../assets/Rectangle 469.png";
 import Video from "../../assets/videos/1.mp4";
 import OurServices from "./ourservices";
@@ -26,7 +26,24 @@ import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
+import Stories from "../../components/popup/stories";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const videoRef = useRef(null);
+
+  const openModal = () => {
+    setIsOpen(true);
+    setTimeout(() => {
+      videoRef.current.play();
+    }, 100);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    videoRef.current.pause();
+    videoRef.current.currentTime = 0;
+  };
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
@@ -86,49 +103,112 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               removeArrowOnDeviceType={["tablet", "mobile"]}
             >
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div className="img ">
-                <img src={Img14} alt="rectangle" />
-              </div>
-              <div className="img ">
-                <img src={Img12} alt="rectangle" />
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
               <div className="img">
-                <video className="rounded-xl h-[250px]"  controls>
-                  <source src={Video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
-              <div className="img relative">
-                <img src={Img14} alt="rectangle" />
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={openModal}
+                >
+                  <img
+                    src={Img13}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
               </div>
             </Carousel>
           </div>
@@ -853,6 +933,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               </p>
             </div>
           </div>
+          {isOpen && <Stories isOpen={isOpen} closeModal={closeModal} videoRef={videoRef}/>}
         </div>
       </IntlProvider>
     </>

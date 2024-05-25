@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
-const SpeechRecognize = ({ speech, setSpeech, onEnd }) => {
+const SpeechRecognize = ({ speech, setSpeech,  }) => {
   const [text, setText] = useState("");
   const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
@@ -14,16 +14,14 @@ const SpeechRecognize = ({ speech, setSpeech, onEnd }) => {
     if (speech) {
       setText(speech);
       const timeoutId = setTimeout(() => {
-        if (onEnd) {
-          onEnd(speech);
-        }
+        speakText()
       }, 1000); // Wait for 1 second before calling onEnd
 
       // Clear timeout if speech changes before the timeout completes
       return () => clearTimeout(timeoutId);
     }
-  }, [speech, onEnd]);
-
+  }, [speech, ]);
+  const speak = "Hi there! How are you doing? I'm currently undergoing maintenance by the search app developers. I'll be back soon with amazing new features. Thank you for your patience!";
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
@@ -34,7 +32,7 @@ const SpeechRecognize = ({ speech, setSpeech, onEnd }) => {
 
   const speakText = () => {
     if ("speechSynthesis" in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
+      const utterance = new SpeechSynthesisUtterance(speak);
       window.speechSynthesis.speak(utterance);
     } else {
       alert("Sorry, your browser does not support speech synthesis.");

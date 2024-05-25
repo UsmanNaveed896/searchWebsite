@@ -14,19 +14,27 @@ const Popup = ({ onClose }) => {
     }
   }, [speech]);
 
-  const handleBotApi = async () => {
-    try {
-      let payLoad={
-        "prompt":"how are you"
-      }
-      const response = await axios.post(
-        "http://www.searchapp.ai/generate-response/",payLoad
-      );
-      setBot(response)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleBotApi = async () => {
+  //   try {
+  //     let headers={
+  //         'Content-Type': 'application/json'
+  //     }
+  //     let payLoad={
+  //       "prompt":"how are you"
+  //     }
+  //     const response = await axios.post(
+  //       'http://54.200.75.25:8000/generate-response',payLoad, {
+  //         headers: {
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json'
+  //         }
+  //       }
+  //     );
+  //     setBot(response)
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   console.log(bot)
   return (
     <motion.div
@@ -41,7 +49,6 @@ const Popup = ({ onClose }) => {
           onClick={onClose}
           className=" text-white hover:font-bold focus:outline-none"
         >
-          <h1 onClick={handleBotApi}>usman</h1>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -78,7 +85,7 @@ const Popup = ({ onClose }) => {
           readOnly
         />
         <div className="mt-[74px] ml-6">
-          <SpeechRecognize speech={speech} setSpeech={setSpeech} onEnd={handleBotApi}/>
+          <SpeechRecognize speech={speech} setSpeech={setSpeech} />
         </div>
 
         {/* <i className="text-[34px]  text-white fa fa-comments-o  cursor-pointer hover:font-bold" aria-hidden="true"></i> */}
