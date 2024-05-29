@@ -14,28 +14,33 @@ const Popup = ({ onClose }) => {
     }
   }, [speech]);
 
-  // const handleBotApi = async () => {
-  //   try {
-  //     let headers={
-  //         'Content-Type': 'application/json'
-  //     }
-  //     let payLoad={
-  //       "prompt":"how are you"
-  //     }
-  //     const response = await axios.post(
-  //       'http://54.200.75.25:8000/generate-response',payLoad, {
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }
-  //     );
-  //     setBot(response)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  console.log(bot)
+  const handleBotApi = async () => {
+    try {
+      let payLoad = {
+        email: "admin@gmail.com",
+        password: "12345678"
+      };
+  
+      const response = await fetch("/api-bot/generate-response", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payLoad)
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      setBot(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  console.log(bot);
   return (
     <motion.div
       initial={{ y: "100%" }}
@@ -45,6 +50,7 @@ const Popup = ({ onClose }) => {
       style={{ backgroundColor: "rgba(64, 64, 64, 0.7)" }} // Adjust the opacity here
     >
       <div className="flex justify-end">
+        <h1 onClick={handleBotApi}>usman</h1>
         <button
           onClick={onClose}
           className=" text-white hover:font-bold focus:outline-none"

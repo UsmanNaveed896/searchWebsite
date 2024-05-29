@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "framer-motion": "^11.0.24",
+    "http-proxy-middleware": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.6.4",
@@ -30,6 +31,7 @@
       "react-app/jest"
     ]
   },
+  "proxy":"https://www.searchapp.ai",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -42,4 +44,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
