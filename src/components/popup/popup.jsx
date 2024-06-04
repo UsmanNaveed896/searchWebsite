@@ -61,7 +61,6 @@ const Popup = ({ onClose }) => {
       style={{ backgroundColor: "rgba(64, 64, 64, 0.7)" }} // Adjust the opacity here
     >
       <div className="flex justify-end">
-        <h1 onClick={handleBotApi}>usman</h1>
         <button
           onClick={onClose}
           className=" text-white hover:font-bold focus:outline-none"
