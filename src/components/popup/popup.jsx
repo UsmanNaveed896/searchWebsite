@@ -17,30 +17,41 @@ const Popup = ({ onClose }) => {
   const handleBotApi = async () => {
     try {
       let payLoad = {
-        email: "admin@gmail.com",
-        password: "12345678"
+        prompt: speech,
       };
-  
-      const response = await fetch("/api-bot/generate-response", {
+
+      const response = await fetch("/api-bot/generate-response/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(payLoad)
+        body: JSON.stringify(payLoad),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
-  
+
       const data = await response.json();
       setBot(data);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  console.log(bot);
+  useEffect(() => {
+   
+    if (speech) {
+      // setText(speech);
+      const timeoutId = setTimeout(() => {
+        handleBotApi();
+      }, 1000); // Wait for 1 second before calling onEnd
+
+      // Clear timeout if speech changes before the timeout completes
+      return () => clearTimeout(timeoutId);
+    }
+  }, [speech]);
+
+
   return (
     <motion.div
       initial={{ y: "100%" }}
@@ -50,7 +61,6 @@ const Popup = ({ onClose }) => {
       style={{ backgroundColor: "rgba(64, 64, 64, 0.7)" }} // Adjust the opacity here
     >
       <div className="flex justify-end">
-        <h1 onClick={handleBotApi}>usman</h1>
         <button
           onClick={onClose}
           className=" text-white hover:font-bold focus:outline-none"
@@ -91,7 +101,7 @@ const Popup = ({ onClose }) => {
           readOnly
         />
         <div className="mt-[74px] ml-6">
-          <SpeechRecognize speech={speech} setSpeech={setSpeech} />
+          <SpeechRecognize speech={speech} setSpeech={setSpeech} bot={bot} />
         </div>
 
         {/* <i className="text-[34px]  text-white fa fa-comments-o  cursor-pointer hover:font-bold" aria-hidden="true"></i> */}
