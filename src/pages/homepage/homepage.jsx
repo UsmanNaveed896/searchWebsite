@@ -17,8 +17,8 @@ import Img10 from "../../assets/Rectangle 5.png";
 import Img11 from "../../assets/Rectangle 8.png";
 import Img12 from "../../assets/Rectangle 14.png";
 import Img13 from "../../assets/Screenshot(45).png";
-import Img14 from "../../assets/Rectangle 469.png";
-import Video from "../../assets/videos/1.mp4";
+import Img14 from "../../assets/Screenshot (50).png";
+import Img15 from "../../assets/Screenshot (51).png";
 import OurServices from "./ourservices";
 import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
@@ -28,11 +28,12 @@ import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
 import Stories from "../../components/popup/stories";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
-
   const [isOpen, setIsOpen] = useState(false);
+  const [vidNum,setVidNum]=useState()
   const videoRef = useRef(null);
 
-  const openModal = () => {
+  const openModal = (num) => {
+    setVidNum(num)
     setIsOpen(true);
     setTimeout(() => {
       videoRef.current.play();
@@ -105,7 +106,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img">
                 <div
                   className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
+                  onClick={() => openModal(1)}
                 >
                   <img
                     src={Img13}
@@ -117,7 +118,31 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img">
                 <div
                   className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
+                  onClick={() => openModal(2)}
+                >
+                  <img
+                    src={Img14}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={() => openModal(3)}
+                >
+                  <img
+                    src={Img15}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={() => openModal(1)}
                 >
                   <img
                     src={Img13}
@@ -129,7 +154,31 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img">
                 <div
                   className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
+                  onClick={() => openModal(2)}
+                >
+                  <img
+                    src={Img14}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={() => openModal(3)}
+                >
+                  <img
+                    src={Img15}
+                    alt="Video Thumbnail"
+                    className="rounded-xl h-[250px] w-[200px]"
+                  />
+                </div>
+              </div>
+              <div className="img">
+                <div
+                  className="flex justify-center items-center h-[250px] cursor-pointer"
+                  onClick={() => openModal(1)}
                 >
                   <img
                     src={Img13}
@@ -141,10 +190,10 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img">
                 <div
                   className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
+                  onClick={() => openModal(2)}
                 >
                   <img
-                    src={Img13}
+                    src={Img14}
                     alt="Video Thumbnail"
                     className="rounded-xl h-[250px] w-[200px]"
                   />
@@ -153,58 +202,10 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               <div className="img">
                 <div
                   className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
+                  onClick={() => openModal(3)}
                 >
                   <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={openModal}
-                >
-                  <img
-                    src={Img13}
+                    src={Img15}
                     alt="Video Thumbnail"
                     className="rounded-xl h-[250px] w-[200px]"
                   />
@@ -933,7 +934,14 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               </p>
             </div>
           </div>
-          {isOpen && <Stories isOpen={isOpen} closeModal={closeModal} videoRef={videoRef}/>}
+          {isOpen && (
+            <Stories
+            vidNum={vidNum}
+              isOpen={isOpen}
+              closeModal={closeModal}
+              videoRef={videoRef}
+            />
+          )}
         </div>
       </IntlProvider>
     </>
