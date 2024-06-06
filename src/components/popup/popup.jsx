@@ -20,7 +20,7 @@ const Popup = ({ onClose }) => {
         prompt: speech,
       };
 
-      const response = await fetch("https://www.searchapp.ai/api-bot/generate-response", {
+      const response = await fetch("/api-bot/generate-response", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

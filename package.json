@@ -32,7 +32,7 @@
       "react-app/jest"
     ]
   },
-
+  "proxy": "https://www.searchapp.ai",
   "browserslist": {
     "production": [
       ">0.2%",
