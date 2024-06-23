@@ -338,7 +338,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute top-[11rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -365,7 +365,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute md:top-[11rem] top-[9rem] md:right-[-10rem] right-[-7rem]">
+                        <div className="absolute md:top-[11rem] top-[9rem] md:right-[-7rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -392,7 +392,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute top-[11rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -419,7 +419,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute top-[11rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -446,7 +446,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute top-[11rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>
@@ -473,7 +473,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                         <h1 className="text-[16px] mt-6  font-semibold ml-1">
                           <FormattedMessage id="All-washing-services-available" />
                         </h1>
-                        <div className="absolute top-[11rem] right-[-10rem]">
+                        <div className="absolute top-[11rem] right-[-7rem]">
                           <span className="bg-[#1F5E7C] px-6 py-1 rounded-xl text-white text-center font-bold text-[12px]">
                             <FormattedMessage id="Claim" />
                           </span>

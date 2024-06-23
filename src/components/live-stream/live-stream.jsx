@@ -25,7 +25,6 @@ export default function LiveStream() {
         
         const liveStartedAt = callState.call.session?.live_started_at;
         const liveEndedAt = callState.call.session?.live_ended_at;
-        console.log(liveEndedAt,"liveEndedAt")
 
         if (liveStartedAt && !liveEndedAt) {
           setIsLive(true);
@@ -38,8 +37,12 @@ export default function LiveStream() {
     };
 
     checkLiveStreamStatus();
+    
+    const interval = setInterval(checkLiveStreamStatus, 5000); 
+
+    return () => clearInterval(interval); 
   }, []);
-console.log(isLive,"islive")
+
   return (
     <StreamVideo client={client}>
       {isLive ? (
