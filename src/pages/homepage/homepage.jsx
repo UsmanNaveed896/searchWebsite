@@ -27,6 +27,7 @@ import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
 import Stories from "../../components/popup/stories";
+import LiveStream from "../../components/live-stream/live-stream";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vidNum,setVidNum]=useState()
@@ -490,10 +491,11 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                 </p>
 
                 <div className="flex justify-center mt-4">
-                  <video width="640" height="360" controls>
+                  {/* <video width="640" height="360" controls>
                     <source src="video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
-                  </video>
+                  </video> */}
+                  <LiveStream/>
                 </div>
 
                 <div className="">
