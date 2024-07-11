@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Img from "../../assets/Hero-Photoroom.png";
 import MultiCarousel from "react-multi-carousel";
 import Carousel from "react-multi-carousel";
-import HomepagePopup from "./homepagepopup";
 import "react-multi-carousel/lib/styles.css";
 import Img1 from "../../assets/Rectangle 22.png";
-import Img2 from "../../assets/Group 48095826.png";
 import Img3 from "../../assets/Vector (4).png";
 import Img4 from "../../assets/a.png";
 import Img5 from "../../assets/Group 25.png";
@@ -15,10 +13,6 @@ import Img8 from "../../assets/Startup_Outline-2 1.png";
 import Img9 from "../../assets/Rectangle 10.png";
 import Img10 from "../../assets/Rectangle 5.png";
 import Img11 from "../../assets/Rectangle 8.png";
-import Img12 from "../../assets/Rectangle 14.png";
-import Img13 from "../../assets/Screenshot(45).png";
-import Img14 from "../../assets/Screenshot (50).png";
-import Img15 from "../../assets/Screenshot (51).png";
 import OurServices from "./ourservices";
 import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
@@ -27,25 +21,33 @@ import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import Popup from "../../components/popup/popup";
 import Stories from "../../components/popup/stories";
-import LiveStream from "../../components/live-stream/live-stream";
+// import LiveStream from "../../components/live-stream/live-stream";
+import axios from "axios";
+import "../../App.css";
+import { useGetAdHook } from "../../hooks/useGetAdHook";
+import { useNavigate } from "react-router-dom";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [vidNum,setVidNum]=useState()
-  const videoRef = useRef(null);
+  const useGetCarDetails = useGetAdHook();
+  const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState(null);
+  const [isVideo, setIsVideo] = useState(false);
+  const [stories, setStories] = useState();
 
-  const openModal = (num) => {
-    setVidNum(num)
-    setIsOpen(true);
-    setTimeout(() => {
-      videoRef.current.play();
-    }, 100);
+  const openModal = (mediaUrl, isVideo) => {
+    setSelectedMedia(mediaUrl);
+    setIsVideo(isVideo);
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setIsOpen(false);
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
+    setModalIsOpen(false);
+    setSelectedMedia(null);
   };
+  useEffect(() => {
+    useGetCarDetails.getCarAds();
+  }, []);
+
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
@@ -82,6 +84,19 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+  const getAllStories = async () => {
+    try {
+      const response = await axios.get(
+        "https://searchapi.codematesolution.com/api/v1/stories"
+      );
+      setStories(response?.data?.data);
+    } catch (error) {
+      console.error("Error fetching stories:", error);
+    }
+  };
+  useEffect(() => {
+    getAllStories();
+  }, []);
 
   return (
     <>
@@ -99,120 +114,50 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
       >
         <div className="homepage relative">
           <div className="images mt-12 px-12 pb-4">
-            <Carousel
-              responsive={newresponsive}
-              showDots={true}
-              removeArrowOnDeviceType={["tablet", "mobile"]}
-            >
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(1)}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
+            {stories?.stories?.length > 0 ? (
+              <Carousel
+                responsive={newresponsive}
+                showDots={true}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+              >
+                {stories?.stories?.map((item, index) => (
+                  <div className="relative img" key={index}>
+                    <div
+                      className="flex justify-center items-center h-[250px] cursor-pointer"
+                      onClick={() =>
+                        openModal(item?.media, item?.media?.includes(".mp4"))
+                      }
+                    >
+                      <div className="relative h-[250px] w-[200px]">
+                        {item?.media?.includes(".mp4") ? (
+                          <video
+                            src={item?.media}
+                            className="rounded-xl h-[250px] w-[200px] object-cover"
+                            alt="Media Thumbnail"
+                            muted
+                          />
+                        ) : (
+                          <img
+                            src={item?.media}
+                            alt="Media Thumbnail"
+                            className="rounded-xl h-[250px] w-[200px] object-cover"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center">
+                          <span className="text-white text-sm text-center font-semibold">
+                            {item?.content || "Title"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              <div className="flex justify-center items-center h-[250px]">
+                <p>No stories available</p>
               </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(2)}
-                >
-                  <img
-                    src={Img14}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(3)}
-                >
-                  <img
-                    src={Img15}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(1)}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(2)}
-                >
-                  <img
-                    src={Img14}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(3)}
-                >
-                  <img
-                    src={Img15}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(1)}
-                >
-                  <img
-                    src={Img13}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(2)}
-                >
-                  <img
-                    src={Img14}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-              <div className="img">
-                <div
-                  className="flex justify-center items-center h-[250px] cursor-pointer"
-                  onClick={() => openModal(3)}
-                >
-                  <img
-                    src={Img15}
-                    alt="Video Thumbnail"
-                    className="rounded-xl h-[250px] w-[200px]"
-                  />
-                </div>
-              </div>
-            </Carousel>
+            )}
           </div>
 
           <div
@@ -495,7 +440,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                     <source src="video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video> */}
-                  <LiveStream/>
+                  {/* <LiveStream /> */}
                 </div>
 
                 <div className="">
@@ -814,98 +759,48 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                 </p>
               </div>
               <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img6} />
+                {useGetCarDetails?.carAd?.carAdvertisements
+                  .slice(0, 3)
+                  .map((item) => (
+                    <div
+                      class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
+                      style={{ boxShadow: shadow }}
+                    >
+                      <div className="">
+                        <div className="flex justify-center">
+                          <img className="w-full" src={Img6} />
+                        </div>
+                      </div>
+                      <div class="p-5">
+                        <h5 class="mb-1 text-[16px] font-bold tracking-tight">
+                          $ {item.price}
+                        </h5>
+                        <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
+                          {item.make} {item.model} {item.year}
+                        </h5>
+                        <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
+                          {item.transmission}
+                        </h5>
+                        <div class="star-rating flex gap-1 mt-2 items-center">
+                          <svg
+                            class="star-icon w-5 h-5"
+                            fill="#f7c300"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
+                          </svg>
+                          <span class="rating-text text-[12px]">
+                            4.5 (415 reviews)
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      $ 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="honda.civic" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img6} />
-                    </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      $ 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="honda.civic" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img6} />
-                    </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      $ 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="honda.civic" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                  ))}
               </div>
-              <p className=" mb-5 text-[#1B8693] text-center text-[15px] font-bold mt-4">
+              <p
+                className=" mb-5 text-[#1B8693] text-center text-[15px] font-bold mt-4 cursor-pointer hover:underline"
+                onClick={() => navigate("/car-listing")}
+              >
                 <FormattedMessage id="more" />
               </p>
             </div>
@@ -936,12 +831,12 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               </p>
             </div>
           </div>
-          {isOpen && (
+          {modalIsOpen && (
             <Stories
-            vidNum={vidNum}
-              isOpen={isOpen}
+              isOpen={modalIsOpen}
               closeModal={closeModal}
-              videoRef={videoRef}
+              selectedMedia={selectedMedia}
+              isVideo={isVideo}
             />
           )}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Car1 from "../../assets/Car1.png";
 import Car2 from "../../assets/Car2.png";
 import Car3 from "../../assets/Car3.png";
@@ -12,7 +12,13 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
+import { useGetAdHook } from "../../hooks/useGetAdHook";
+import { useLocation, useNavigate } from "react-router-dom";
 const CarDi = ({ locale }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const details = location.state;
+  console.log(details, "details");
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
 
@@ -42,8 +48,17 @@ const CarDi = ({ locale }) => {
       }
     >
       <div className="px-8 py-4">
-        <h1 className="text-[#1B8693] font-poppins text-3xl font-medium leading-10 tracking-wide mb-2">
-          <FormattedMessage id="car.title" />
+        <button
+          className="border rounded py-2 px-4 text-[#1B8693] border-[#1B8693] my-3 hover:font-bold"
+          onClick={() => navigate("/car-listing")}
+        >
+          Back to Details
+        </button>
+        <h1 className="text-[#1B8693] font-poppins text-3xl font-medium leading-10 tracking-wide mb-2 uppercase">
+          {details?.make} {details.model}
+        </h1>
+        <h1 className="font-poppins text-2xl font-bold leading-10 tracking-wide mb-2 uppercase">
+          $ {details?.price}
         </h1>
         <div className="grid grid-cols-3 gap-4 pb-10">
           <div className="col-span-2 relative">
@@ -73,25 +88,18 @@ const CarDi = ({ locale }) => {
         </div>
 
         <div className="flex items-center justify-center w-[100%]">
-          <div
-            className="bg-[#f4f4f4] w-[100%] rounded-lg mb-10 pt-4 pb-4"
-           
-          >
+          <div className="bg-[#f4f4f4] w-[100%] rounded-lg mb-10 pt-4 pb-4">
             <div className="flex justify-between">
               <div className="flex flex-col items-center px-7">
                 <i className="fa fa-tachometer text-[#757575]"></i>
-                <h5 className="text-center">
-                  <FormattedMessage id="title.mileage" />
-                </h5>
-                <h5 className="text-sm">
+                <h5 className="text-center">{details.mileage} KM</h5>
+                {/* <h5 className="text-sm">
                   <FormattedMessage id="mileage.to" />
-                </h5>
+                </h5> */}
               </div>
               <div className="flex flex-col items-center">
                 <i className="fa fa-tachometer text-[#757575]"></i>
-                <h5 className="text-center">
-                  <FormattedMessage id="title.automatic" />
-                </h5>
+                <h5 className="text-center">{details.transmission}</h5>
                 <h5 className="text-sm">
                   <FormattedMessage id="title.cvt" />
                 </h5>
@@ -101,16 +109,17 @@ const CarDi = ({ locale }) => {
                 <h5 className="text-center">
                   <FormattedMessage id="fuel.type" />
                 </h5>
-                <h5 className="text-sm">
-                  <FormattedMessage id="title.petrol" />
-                </h5>
+                <h5 className="text-sm">{details.fuelType}</h5>
               </div>
               <div className="flex flex-col items-center pr-7">
                 <i className="fa fa-cogs text-[#757575]"></i>
-                <h5 className="text-center">
-                  <FormattedMessage id="title.engine" />
-                </h5>
-                <h5 className="text-sm">1498 cc</h5>
+                <h5 className="text-center">Condition</h5>
+                <h5 className="text-sm">{details.condition}</h5>
+              </div>
+              <div className="flex flex-col items-center pr-7">
+                <i className="fa fa-calendar text-[#757575]"></i>
+                <h5 className="text-center">Year</h5>
+                <h5 className="text-sm">{details.year}</h5>
               </div>
             </div>
           </div>
@@ -167,10 +176,7 @@ const CarDi = ({ locale }) => {
           </div>
         </div>
         <div className="flex justify-center pt-8">
-          <div
-            className="bg-[#f4f4f4] w-full py-8 rounded-lg mb-10 "
-           
-          >
+          <div className="bg-[#f4f4f4] w-full py-8 rounded-lg mb-10 ">
             <div className="flex flex-wrap justify-center gap-6">
               <div className="flex flex-col items-center  ">
                 <div className="h-12 w-12 rounded-full bg-[#B31B1B] "></div>
@@ -414,7 +420,6 @@ const CarDi = ({ locale }) => {
                       <FormattedMessage id="car.detail" />
                     </h5>
                     <div class="star-rating flex gap-1 mt-2 items-center">
-                   
                       <span class="rating-text text-[12px]"></span>
                     </div>
                   </div>

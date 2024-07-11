@@ -1,11 +1,7 @@
-import React, { useState, useRef } from "react";
-import Video from "../../assets/videos/1.mp4";
-import Video1 from "../../assets/videos/2.mp4";
-import Video2 from "../../assets/videos/3.mp4";
+import React from "react";
 
-import Img from "../../assets/a.png";
-const Stories = ({ isOpen, closeModal, videoRef, vidNum }) => {
-  console.log(vidNum, "vid");
+const Stories = ({ isOpen, closeModal, isVideo, selectedMedia,  }) => {
+  
   return (
     <div>
       {isOpen && (
@@ -13,18 +9,24 @@ const Stories = ({ isOpen, closeModal, videoRef, vidNum }) => {
           <div className="flex items-center justify-center min-h-screen bg-black bg-opacity-75">
             <div className="relative bg-white rounded-lg overflow-hidden">
               <button
-                className="absolute top-2 right-2 z-[999] text-white text-3xl font-bold"
                 onClick={closeModal}
+                className="absolute z-[999] top-4 right-4 text-white bg-black p-2 rounded-full"
               >
-                &times;
+                Close
               </button>
-              <video ref={videoRef} className="rounded-xl h-[650px]" controls>
-                <source
-                  src={vidNum == "1" ? Video2 : vidNum == "2" ? Video : Video1}
-                  type="video/mp4"
+              {isVideo ? (
+                <video
+                  src={ selectedMedia}
+                  controls
+                  className="h-[500px]"
                 />
-                Your browser does not support the video tag.
-              </video>
+              ) : (
+                <img
+                  src={selectedMedia}
+                  alt="Selected Media"
+                  className="h-[500px]"
+                />
+              )}
             </div>
           </div>
         </div>

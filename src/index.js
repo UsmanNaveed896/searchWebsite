@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { StreamTheme } from "@stream-io/video-react-sdk";
-import "@stream-io/video-react-sdk/dist/css/styles.css";
+// import { StreamTheme } from "@stream-io/video-react-sdk";
+import { ToastContainer } from 'react-toastify';
+// import "@stream-io/video-react-sdk/dist/css/styles.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <StreamTheme style={{ fontFamily: "sans-serif", color: "white" }}>
+  // <StreamTheme style={{ fontFamily: "sans-serif", }}>
   <BrowserRouter>
     <App />
+    <ToastContainer />
   </BrowserRouter>
-  </StreamTheme>
+  // </StreamTheme>
 );
 
 // If you want to start measuring performance in your app, pass a function

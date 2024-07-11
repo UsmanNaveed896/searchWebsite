@@ -12,6 +12,7 @@ import CarDi from './pages/carDi/carDi'
 import BookMark from './pages/BookMark/BookMark'
 import Advertise from './pages/Advertise/Advertise'
 import Popup from './components/popup/popup'
+import CarAdListing from './pages/carDi/carAdListing'
 
 const Routess = () => {
     const [locale, setLocale] = useState('en');
@@ -20,12 +21,11 @@ const Routess = () => {
         setShowPopup(false);
       };
       useEffect(() => {
-        // Set showPopup to true after a short delay to demonstrate the animation
+        
         const timeout = setTimeout(() => {
           setShowPopup(true);
         }, 500);
     
-        // Clear the timeout to avoid memory leaks
         return () => clearTimeout(timeout);
       }, []);
     return (
@@ -41,7 +41,8 @@ const Routess = () => {
                 <Route exact path='/homeimprovement' element={<HomeImprovement locale={locale}/>} />
                 <Route exact path='/property-management' element={<PropertyManagement locale={locale}/>} />
                 <Route exact path='/about-Company' element={<AboutCompany locale={locale}/>} />
-                <Route exact path='/car-di' element={<CarDi  locale={locale} />} />
+                <Route exact path='/car-di/:id' element={<CarDi  locale={locale} />} />
+                <Route exact path='/car-listing' element={<CarAdListing  locale={locale} />} />
                 <Route exact path='/advertise' element={<Advertise locale={locale}/>} />
                 <Route exact path='/book-mark' element={<BookMark locale={locale}/>} />
 
