@@ -15,13 +15,13 @@ const CarAdListing = () => {
     navigate(`/car-di/${item._id}`, { state: item });
   };
   return (
-    <div className="flex justify-center ">
-      <div className="container max-w-[1000px] mt-2 md:px-0 px-4 ">
+    <div className="flex justify-center h-[80vh] overflow-auto ">
+      <div className="container max-w-[1000px] mt-2 md:px-0 px-4   ">
         <div className=" text-start mt-16  mb-3">
           <p className="font-bold text-[38px] text-[#1B8693]">Cars for You</p>
           <p className=" font-semibold text-[28px]">Get Your Dream Car</p>
         </div>
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16 pb-8">
           {useGetCarDetails?.carAd?.carAdvertisements.map((item) => (
             <div
               class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
