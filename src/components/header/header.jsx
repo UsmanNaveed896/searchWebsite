@@ -101,7 +101,7 @@ const Header = ({ setLocale, locale,setShowPopup }) => {
 
                 <li
                   className="cursor-pointer hover:font-bold"
-                  onClick={() => navigate("/car-di")}
+                  onClick={() => navigate("/car-listing")}
                 >
                   <FormattedMessage id="Automobile" />
                 </li>
