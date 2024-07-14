@@ -17,7 +17,6 @@ export const useGetAdHook = () => {
     // }
     try {
       const response = await axios.get(`https://searchapi.codematesolution.com/api/v1/carAdvertisements`, );
-      console.log(response,"response")
       setGetCarAd(response?.data?.data);
       setLoading(false);
     } catch (error) {

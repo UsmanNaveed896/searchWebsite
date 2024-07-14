@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import Img from "../../assets/qwq.png";
 import SpeechRecognize from "../speechtotext/speechRecognize";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Popup = ({ onClose }) => {
+  const navigate=useNavigate()
+  const [loading,setLoading]=useState(false)
   const [speech, setSpeech] = useState("");
   const [bot, setBot] = useState();
   const textareaRef = useRef(null);
@@ -15,27 +18,36 @@ const Popup = ({ onClose }) => {
   }, [speech]);
 
   const handleBotApi = async () => {
+    setLoading(true)
     try {
       let payLoad = {
         prompt: speech,
       };
-
-      const response = await fetch("/api-bot/generate-response", {
-        method: "POST",
+  
+      await axios.post("http://localhost:8080/https://searchapp.ai/api-bot/generate-response", payLoad, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payLoad),
+      }).then((res)=>{
+        console.log(res,"res")
+        setLoading(false)
+        setBot(res.data);
+        setTimeout(() => {
+          if (res.data.action === "Seller") {
+            navigate("https://search-app-blond.vercel.app/");
+          } else if (res.data.action === "Furniture") {
+            navigate("/car-listing");
+          } else if (res.data.action === "Virtual Office") {
+            navigate("/virtualoffice");
+          }
+        }, 2000); // 2000 milliseconds = 2 seconds
       });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      setBot(data);
+    
+  
+    
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
   useEffect(() => {
@@ -101,7 +113,7 @@ const Popup = ({ onClose }) => {
           readOnly
         />
         <div className="mt-[74px] ml-6">
-          <SpeechRecognize speech={speech} setSpeech={setSpeech} bot={bot} />
+          <SpeechRecognize speech={speech} setSpeech={setSpeech} bot={bot} loading={loading}/>
         </div>
 
         {/* <i className="text-[34px]  text-white fa fa-comments-o  cursor-pointer hover:font-bold" aria-hidden="true"></i> */}
