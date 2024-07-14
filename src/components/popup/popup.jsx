@@ -4,6 +4,7 @@ import Img from "../../assets/qwq.png";
 import SpeechRecognize from "../speechtotext/speechRecognize";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Popup = ({ onClose }) => {
   const navigate=useNavigate()
   const [loading,setLoading]=useState(false)
@@ -24,7 +25,7 @@ const Popup = ({ onClose }) => {
         prompt: speech,
       };
   
-      await axios.post("http://localhost:8080/https://searchapp.ai/api-bot/generate-response", payLoad, {
+      await axios.post("https://cors-anywhere.herokuapp.com/https://searchapp.ai/api-bot/generate-response", payLoad, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -47,6 +48,7 @@ const Popup = ({ onClose }) => {
     
     } catch (error) {
       console.log(error);
+      toast.error(error.message)
       setLoading(false)
     }
   };
