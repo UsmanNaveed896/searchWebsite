@@ -7,9 +7,10 @@ import { IntlProvider, FormattedMessage } from 'react-intl';
 import {messagesEn} from '../../localization/messagesEn';
 import {messagesFr} from '../../localization/messagesFr';
 import {messagesAr} from '../../localization/messagesAr';
+
 const PropertyManagement = ({ locale }) =>  {
     const shadow = '4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)';
-
+   
     return (
         <IntlProvider locale={locale} messages={locale === 'en' ? messagesEn : locale === 'fr' ? messagesFr : messagesAr}>
            
