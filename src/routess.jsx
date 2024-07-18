@@ -13,6 +13,7 @@ import BookMark from './pages/BookMark/BookMark'
 import Advertise from './pages/Advertise/Advertise'
 import Popup from './components/popup/popup'
 import CarAdListing from './pages/carDi/carAdListing'
+import FurnitureExhib from './pages/furnitureexhibition/furnitureExhib'
 
 const Routess = () => {
     const [locale, setLocale] = useState('en');
@@ -45,6 +46,8 @@ const Routess = () => {
                 <Route exact path='/car-listing' element={<CarAdListing  locale={locale} />} />
                 <Route exact path='/advertise' element={<Advertise locale={locale}/>} />
                 <Route exact path='/book-mark' element={<BookMark locale={locale}/>} />
+                <Route exact path='/furniture' element={<FurnitureExhib locale={locale}/>} />
+
 
             </Routes>
             <Footer locale={locale}/>
