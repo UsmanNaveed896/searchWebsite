@@ -112,7 +112,9 @@ const Header = ({ setLocale, locale,setShowPopup }) => {
                   {" "}
                   <FormattedMessage id="Virtual-Office" />
                 </li>
-                <li className="cursor-pointer hover:font-bold">
+                <li className="cursor-pointer hover:font-bold"
+                onClick={() => navigate("/furniture")}
+                >
                   {" "}
                   <FormattedMessage id="Furniture Exhibition" />
                 </li>

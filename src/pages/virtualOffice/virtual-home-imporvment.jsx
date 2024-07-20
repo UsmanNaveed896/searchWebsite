@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Img from "../../assets/Hero-person.png";
 import Img1 from "../../assets/Group 158.png";
 import Img5 from "../../assets/Group 1000000947.png";
@@ -7,8 +7,16 @@ import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
 import { messagesAr } from "../../localization/messagesAr";
 import { useNavigate } from "react-router-dom";
+import { useGetVirtualOffices } from "../../hooks/useGetVirtualOffices";
 const HomeImprovement = ({ locale }) => {
     const navigate=useNavigate();
+    const getVitualOffices=useGetVirtualOffices();
+
+    useEffect(()=>{
+        getVitualOffices.handleGetVirtualOffices()
+    },[])
+
+    console.log(getVitualOffices.virtualOffice,"virtual")
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
 
