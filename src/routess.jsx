@@ -15,6 +15,8 @@ import Popup from './components/popup/popup'
 import CarAdListing from './pages/carDi/carAdListing'
 import PropertyListing from './pages/propertydetail/propertyListing'
 import PropertyDetails from './pages/propertydetail/property-details'
+import FurnitureExhib from './pages/furnitureexhibition/furnitureExhib'
+
 const Routess = () => {
     const [locale, setLocale] = useState('en');
     const [showPopup, setShowPopup] = useState(true);
@@ -49,6 +51,7 @@ const Routess = () => {
                 <Route exact path='/property-listing' element={<PropertyListing locale={locale}/>} />
                 <Route exact path='/property-details/:id' element={<PropertyDetails locale={locale}/>} />
 
+                <Route exact path='/furniture' element={<FurnitureExhib locale={locale}/>} />
 
 
             </Routes>
