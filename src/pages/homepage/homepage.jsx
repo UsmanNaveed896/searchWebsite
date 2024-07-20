@@ -26,8 +26,9 @@ import axios from "axios";
 import "../../App.css";
 import { useGetAdHook } from "../../hooks/useGetAdHook";
 import { useNavigate } from "react-router-dom";
+import { BallTriangle } from "react-loader-spinner";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
-  const useGetCarDetails = useGetAdHook();
+  const useGetAdDetails = useGetAdHook();
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
@@ -45,7 +46,8 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
     setSelectedMedia(null);
   };
   useEffect(() => {
-    useGetCarDetails.getCarAds();
+    useGetAdDetails.getCarAds();
+    useGetAdDetails.getPropertyAds();
   }, []);
 
   const shadow =
@@ -98,6 +100,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
     getAllStories();
   }, []);
 
+  console.log(useGetAdDetails?.propertAds, "add");
   return (
     <>
       {/* <HomepagePopup/>
@@ -554,197 +557,89 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                   <FormattedMessage id="dream.property.seller" />
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mt-16">
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img9} />
-                    </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      IDR 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="car.detail" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                    <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
-                      Sell
-                    </h5>
-                  </div>
-                  <div className="flex justify-between px-5 mb-2">
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img3} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Bedroom" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">1</p>
-                    </div>
-
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img4} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Washroom" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">2</p>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img5} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="home.area" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">360m</p>
-                    </div>
-                  </div>
+              {useGetAdDetails.loading ? (
+                <div className="flex justify-center">
+                  <BallTriangle
+                    height={50}
+                    width={50}
+                    radius={5}
+                    color="blue"
+                    ariaLabel="ball-triangle-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
                 </div>
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img10} />
-                    </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      IDR 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="car.detail" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mt-16">
+                  {useGetAdDetails?.propertAds?.postAdvertisements
+                    ?.slice(0, 3)
+                    .map((item) => (
+                      <div
+                        class="max-w-sm mt-4 rounded-xl cursor-pointer"
+                        style={{ boxShadow: shadow }}
+                        onClick={() => navigate("/property-listing")}
                       >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                    <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
-                      Sell
-                    </h5>
-                  </div>
-                  <div className="flex justify-between px-5 mb-2">
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img3} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Bedroom" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">1</p>
-                    </div>
+                        <div className="">
+                          <div className="flex justify-center">
+                            <img className="w-full" src={Img9} />
+                          </div>
+                        </div>
+                        <div class="p-5">
+                          <h5 class="mb-1 text-[16px] font-bold tracking-tight">
+                            {item.price} $
+                          </h5>
+                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
+                            {item.title}
+                          </h5>
+                          <div class="star-rating flex gap-1 mt-2 items-center">
+                            {item.description}
+                          </div>
+                          <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
+                            {item.location}
+                          </h5>
+                        </div>
+                        <div className="flex justify-between px-5 mb-2">
+                          <div className="flex gap-2 items-center">
+                            <div>
+                              <img src={Img3} alt="abc" />
+                              <p className="font-bold text-[12px]">
+                                <FormattedMessage id="Bedroom" />
+                              </p>
+                            </div>
+                            <p className="font-bold text-[12px]">
+                              {item.bedrooms}
+                            </p>
+                          </div>
 
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img4} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Washroom" />
-                        </p>
+                          <div className="flex gap-2 items-center">
+                            <div>
+                              <img src={Img4} alt="abc" />
+                              <p className="font-bold text-[12px]">
+                                <FormattedMessage id="Washroom" />
+                              </p>
+                            </div>
+                            <p className="font-bold text-[12px]">
+                              {item.bathrooms}
+                            </p>
+                          </div>
+                          <div className="flex gap-2 items-center">
+                            <div>
+                              <img src={Img5} alt="abc" />
+                              <p className="font-bold text-[12px]">
+                                <FormattedMessage id="home.area" />
+                              </p>
+                            </div>
+                            <p className="font-bold text-[12px]">
+                              {item.area} Sqft
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <p className="font-bold text-[12px]">2</p>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img5} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="home.area" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">360m</p>
-                    </div>
-                  </div>
+                    ))}
                 </div>
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
-                    <div className="flex justify-center">
-                      <img className="w-full" src={Img11} />
-                    </div>
-                  </div>
-                  <div class="p-5">
-                    <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                      IDR 200.000.000
-                    </h5>
-                    <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                      <FormattedMessage id="car.detail" />
-                    </h5>
-                    <div class="star-rating flex gap-1 mt-2 items-center">
-                      <svg
-                        class="star-icon w-5 h-5"
-                        fill="#f7c300"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                      </svg>
-                      <span class="rating-text text-[12px]">
-                        4.5 (415 reviews)
-                      </span>
-                    </div>
-                    <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
-                      <FormattedMessage id="Sell" />
-                    </h5>
-                  </div>
-                  <div className="flex justify-between px-5 mb-2">
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img3} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Bedroom" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">1</p>
-                    </div>
+              )}
 
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img4} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="Washroom" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">2</p>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                      <div>
-                        <img src={Img5} alt="abc" />
-                        <p className="font-bold text-[12px]">
-                          <FormattedMessage id="home.area" />
-                        </p>
-                      </div>
-                      <p className="font-bold text-[12px]">360m</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
               {/* <p className="text-[#1B8693] text-center text-[15px] font-bold mt-4">
                 <FormattedMessage id="more" />
               </p> */}
@@ -758,45 +653,61 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                   <FormattedMessage id="dream.car.seller" />
                 </p>
               </div>
-              <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
-                {useGetCarDetails?.carAd?.carAdvertisements
-                  .slice(0, 3)
-                  .map((item) => (
-                    <div
-                      class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
-                      style={{ boxShadow: shadow }}
-                    >
-                      <div className="">
-                        <div className="flex justify-center">
-                          <img className="w-full" src={Img6} />
+              {useGetAdDetails.loading ? (
+                <div className="flex justify-center">
+                <BallTriangle
+                  height={50}
+                  width={50}
+                  radius={5}
+                  color="blue"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
+                  {useGetAdDetails?.carAd?.carAdvertisements
+                    .slice(0, 3)
+                    .map((item) => (
+                      <div
+                        class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
+                        style={{ boxShadow: shadow }}
+                      >
+                        <div className="">
+                          <div className="flex justify-center">
+                            <img className="w-full" src={Img6} />
+                          </div>
+                        </div>
+                        <div class="p-5">
+                          <h5 class="mb-1 text-[16px] font-bold tracking-tight">
+                            $ {item.price}
+                          </h5>
+                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
+                            {item.make} {item.model} {item.year}
+                          </h5>
+                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
+                            {item.transmission}
+                          </h5>
+                          <div class="star-rating flex gap-1 mt-2 items-center">
+                            <svg
+                              class="star-icon w-5 h-5"
+                              fill="#f7c300"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
+                            </svg>
+                            <span class="rating-text text-[12px]">
+                              4.5 (415 reviews)
+                            </span>
+                          </div>
                         </div>
                       </div>
-                      <div class="p-5">
-                        <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                          $ {item.price}
-                        </h5>
-                        <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
-                          {item.make} {item.model} {item.year}
-                        </h5>
-                        <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
-                          {item.transmission}
-                        </h5>
-                        <div class="star-rating flex gap-1 mt-2 items-center">
-                          <svg
-                            class="star-icon w-5 h-5"
-                            fill="#f7c300"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                          </svg>
-                          <span class="rating-text text-[12px]">
-                            4.5 (415 reviews)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div>
+                    ))}
+                </div>
+              )}
+
               <p
                 className=" mb-5 text-[#1B8693] text-center text-[15px] font-bold mt-4 cursor-pointer hover:underline"
                 onClick={() => navigate("/car-listing")}

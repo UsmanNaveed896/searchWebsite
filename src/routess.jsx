@@ -13,6 +13,8 @@ import BookMark from './pages/BookMark/BookMark'
 import Advertise from './pages/Advertise/Advertise'
 import Popup from './components/popup/popup'
 import CarAdListing from './pages/carDi/carAdListing'
+import PropertyListing from './pages/propertydetail/propertyListing'
+import PropertyDetails from './pages/propertydetail/property-details'
 import FurnitureExhib from './pages/furnitureexhibition/furnitureExhib'
 
 const Routess = () => {
@@ -46,6 +48,9 @@ const Routess = () => {
                 <Route exact path='/car-listing' element={<CarAdListing  locale={locale} />} />
                 <Route exact path='/advertise' element={<Advertise locale={locale}/>} />
                 <Route exact path='/book-mark' element={<BookMark locale={locale}/>} />
+                <Route exact path='/property-listing' element={<PropertyListing locale={locale}/>} />
+                <Route exact path='/property-details/:id' element={<PropertyDetails locale={locale}/>} />
+
                 <Route exact path='/furniture' element={<FurnitureExhib locale={locale}/>} />
 
 
