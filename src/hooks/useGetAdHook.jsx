@@ -9,6 +9,7 @@ export const useGetAdHook = () => {
   const [loading, setLoading] = useState(false);
   const [carAd, setGetCarAd] = useState();
   const [propertAds, setPropertyAds] = useState();
+  const [furnitureAds,setFurnitureAds]=useState()
   let token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmY0YWYxMzA1OGJmYTk0MGNiYWY5NiIsImlhdCI6MTcyMTMzNTQwMCwiZXhwIjoxNzI5MTExNDAwfQ.fqnPTpH2fLMypFKY1E2HV6c3wazJJsHKj9tJn79Hw98";
 
@@ -54,10 +55,10 @@ export const useGetAdHook = () => {
     };
     try {
       const response = await axios.get(
-        `https://searchapi.codematesolution.com/api/v1/postAdvertisements`,
+        `https://searchapi.codematesolution.com/api/v1/furnitureAdvertisements`,
         { headers }
       );
-      setPropertyAds(response?.data?.data);
+      setFurnitureAds(response?.data?.data);
       setLoading(false);
     } catch (error) {
       toast.error(error.message);
@@ -71,5 +72,7 @@ export const useGetAdHook = () => {
     carAd,
     propertAds,
     getPropertyAds,
+    getFurnitureAds,
+    furnitureAds
   };
 };
