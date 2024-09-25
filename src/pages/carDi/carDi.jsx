@@ -233,23 +233,36 @@ const CarDi = ({ locale }) => {
         </div>
         <div className="flex justify-between pb-2">
           <div className="w-2/6">
-            <div className="flex justify-between">
+          <div className="flex justify-between">
               <p>
-                <FormattedMessage id="registered.in" />
+                {/* <FormattedMessage id="registered.in" /> */}
+                Make
               </p>
               <p>
-                <FormattedMessage id="title.usa" />
+                {/* <FormattedMessage id="title.usa" /> */}
+                {details.make}
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p>
+                {/* <FormattedMessage id="registered.in" /> */}
+                Model
+              </p>
+              <p>
+                {/* <FormattedMessage id="title.usa" /> */}
+                {details.model}
               </p>
             </div>
           </div>
           <div className="w-2/6 mx-auto">
             <div className="flex justify-between">
-              <p>
-                <FormattedMessage id="title.color" />
-              </p>
-              <p>
-                <FormattedMessage id="title.blue" />
-              </p>
+              <FormattedMessage id="title.color" />
+              {details.colors.map((item) => (
+                <div className="block">
+                  <p>{item}</p>
+                </div>
+              ))}
+       
             </div>
           </div>
         </div>
@@ -265,19 +278,22 @@ const CarDi = ({ locale }) => {
           <div className="w-2/6">
             <div className="flex justify-between">
               <p>
-                <FormattedMessage id="title.Assembly" />
+                {/* <FormattedMessage id="title.Assembly" /> */}
+                Mileage
               </p>
               <p>
-                <FormattedMessage id="title.Imported" />
+                {/* <FormattedMessage id="title.Imported" /> */}
+                {details.mileage}
               </p>
             </div>
           </div>
           <div className="w-2/6 mx-auto">
             <div className="flex justify-between pb-2">
               <p>
-                <FormattedMessage id="engine.capacity" />
+                {/* <FormattedMessage id="engine.capacity" /> */}
+                Transmission
               </p>
-              <p>1498cc</p>
+              <p>{details.transmission}</p>
             </div>
           </div>
         </div>

@@ -23,16 +23,18 @@ const CarAdListing = () => {
           <p className=" font-semibold text-[28px]">Get Your Dream Car</p>
         </div>
         {useGetCarDetails.loading ? (
-          <BallTriangle
-            height={100}
-            width={100}
-            radius={5}
-            color="blue"
-            ariaLabel="ball-triangle-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+         <div className="flex justify-center">
+         <BallTriangle
+           height={50}
+           width={50}
+           radius={5}
+           color="blue"
+           ariaLabel="ball-triangle-loading"
+           wrapperStyle={{}}
+           wrapperClass=""
+           visible={true}
+         />
+       </div>
         ) : (
           <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16 pb-8">
             {useGetCarDetails?.carAd?.carAdvertisements.map((item) => (
