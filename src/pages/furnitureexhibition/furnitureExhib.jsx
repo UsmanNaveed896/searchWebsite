@@ -5,14 +5,18 @@ import Img3 from "../../assets/couch1.png";
 import Img4 from "../../assets/couch3.png";
 import { useGetAdHook } from "../../hooks/useGetAdHook";
 import { BallTriangle } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const FurnitureExhib = () => {
+  const navigate=useNavigate()
   const getFurniture = useGetAdHook();
 
   useEffect(() => {
     getFurniture.getFurnitureAds();
   }, []);
-
+  const handleDetails = (item) => {
+    navigate(`/furniture-details/${item._id}`, { state: item });
+  };
   console.log(getFurniture.furnitureAds, "console");
   const shadow =
     "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
@@ -45,7 +49,7 @@ const FurnitureExhib = () => {
             {getFurniture.furnitureAds?.carAdvertisements?.map((item) => (
               <div
                 class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
-                // onClick={() => handleDetails(item)}
+                onClick={() => handleDetails(item)}
                 style={{ boxShadow: shadow }}
               >
                 <div className="">

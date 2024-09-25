@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 // import { StreamTheme } from "@stream-io/video-react-sdk";
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import "@stream-io/video-react-sdk/dist/css/styles.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

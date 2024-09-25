@@ -16,6 +16,7 @@ import CarAdListing from './pages/carDi/carAdListing'
 import PropertyListing from './pages/propertydetail/propertyListing'
 import PropertyDetails from './pages/propertydetail/property-details'
 import FurnitureExhib from './pages/furnitureexhibition/furnitureExhib'
+import FurnitureDetails from './pages/furnitureexhibition/furnitureDetails'
 
 const Routess = () => {
     const [locale, setLocale] = useState('en');
@@ -52,6 +53,8 @@ const Routess = () => {
                 <Route exact path='/property-details/:id' element={<PropertyDetails locale={locale}/>} />
 
                 <Route exact path='/furniture' element={<FurnitureExhib locale={locale}/>} />
+                <Route exact path='/furniture-details/:id' element={<FurnitureDetails locale={locale}/>} />
+
 
 
             </Routes>
