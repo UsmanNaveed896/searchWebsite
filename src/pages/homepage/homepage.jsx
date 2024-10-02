@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import Img from "../../assets/Hero-Photoroom.png";
+import Img from "../../assets/house.jpg";
 import MultiCarousel from "react-multi-carousel";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Img1 from "../../assets/Rectangle 22.png";
-import Img3 from "../../assets/Vector (4).png";
-import Img4 from "../../assets/a.png";
-import Img5 from "../../assets/Group 25.png";
+import Img3 from "../../assets/Rectangle 5.png";
+import Img4 from "../../assets/Rectangle 8.png";
+import Img5 from "../../assets/Rectangle 10.png";
 import Img6 from "../../assets/Notifications_Outline 1.png";
 import Img7 from "../../assets/Data processing _Outline 1.png";
 import Img8 from "../../assets/Startup_Outline-2 1.png";
 import Img9 from "../../assets/Rectangle 10.png";
-import Img10 from "../../assets/Rectangle 5.png";
-import Img11 from "../../assets/Rectangle 8.png";
-import OurServices from "./ourservices";
-import MultiCarouselHome from "./multi-carousel";
+import Img10 from "../../assets/Group9.svg";
+import Img11 from "../../assets/Group 10.svg";
+import Img12 from "../../assets/Group 11.svg";
+import Img13 from "../../assets/Group 12.png";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
@@ -27,6 +27,15 @@ import "../../App.css";
 import { useGetAdHook } from "../../hooks/useGetAdHook";
 import { useNavigate } from "react-router-dom";
 import { BallTriangle } from "react-loader-spinner";
+import LiveStreamingSection from "../../components/livestreamSection/liveStreamSection";
+import OurServicesSection from "../../components/ourservicesSection/ourServices";
+import PropertyCard from "../../components/cards/propertyCard";
+import { cars, furniture } from "../../dummyData/dummyData";
+import CarsCard from "../../components/cards/carsCard";
+import FurnitureCard from "../../components/cards/furnitureCard";
+import WhyChooseUs from "../../components/whychooseus/whychooseus";
+import BlogSection from "../../components/blogSection/blogSection";
+import TestimonialSection from "../../components/testimonialSections/testimonialSection";
 const Homepage = ({ locale, showPopup, setShowPopup }) => {
   const useGetAdDetails = useGetAdHook();
   const navigate = useNavigate();
@@ -45,13 +54,29 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
     setModalIsOpen(false);
     setSelectedMedia(null);
   };
-  useEffect(() => {
-    useGetAdDetails.getCarAds();
-    useGetAdDetails.getPropertyAds();
-  }, []);
+  // useEffect(() => {
+  //   useGetAdDetails.getCarAds();
+  //   useGetAdDetails.getPropertyAds();
+  // }, []);
+  const cardsData = [
+    {
+      title: "Home inspections",
+      icon: Img10,
+    },
+    {
+      title: "Property insurance",
+      icon: Img11,
+    },
+    {
+      title: "Best location",
+      icon: Img12,
+    },
+    {
+      title: "Lots & land",
+      icon: Img13,
+    },
+  ];
 
-  const shadow =
-    "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -86,21 +111,57 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const getAllStories = async () => {
-    try {
-      const response = await axios.get(
-        "https://searchapi.codematesolution.com/api/v1/stories"
-      );
-      setStories(response?.data?.data);
-    } catch (error) {
-      console.error("Error fetching stories:", error);
-    }
-  };
-  useEffect(() => {
-    getAllStories();
-  }, []);
-
-  console.log(useGetAdDetails?.propertAds, "add");
+  // const getAllStories = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://searchapi.codematesolution.com/api/v1/stories"
+  //     );
+  //     setStories(response?.data?.data);
+  //   } catch (error) {
+  //     console.error("Error fetching stories:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getAllStories();
+  // }, []);
+  const properties = [
+    {
+      id: 1,
+      location: "New York, USA",
+      beds: 8,
+      size: "10*10",
+      rooms: 6,
+      price: 5200,
+      imageUrl: Img,
+    },
+    {
+      id: 2,
+      location: "Los Angeles, USA",
+      beds: 5,
+      size: "12*12",
+      rooms: 4,
+      price: 4500,
+      imageUrl: Img3,
+    },
+    {
+      id: 3,
+      location: "Miami, USA",
+      beds: 6,
+      size: "8*10",
+      rooms: 5,
+      price: 4700,
+      imageUrl: Img4,
+    },
+    {
+      id: 4,
+      location: "San Francisco, USA",
+      beds: 7,
+      size: "9*11",
+      rooms: 5,
+      price: 4900,
+      imageUrl: Img5,
+    },
+  ];
   return (
     <>
       {/* <HomepagePopup/>
@@ -116,7 +177,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
         }
       >
         <div className="homepage relative">
-          <div className="images mt-12 px-12 pb-4">
+          {/* <div className="images mt-12 px-12 pb-4">
             {stories?.stories?.length > 0 ? (
               <Carousel
                 responsive={newresponsive}
@@ -161,10 +222,10 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                 <p>No stories available</p>
               </div>
             )}
-          </div>
+          </div> */}
 
-          <div
-            className=" bg-cover pb-16"
+          {/* <div
+            className=" bg-center h-full pb-16"
             style={{ backgroundImage: `url(${Img})` }}
           >
             <div className="flex justify-evenly">
@@ -253,8 +314,177 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                 </div>
               </div>
             </div>
+          </div> */}
+
+          <div className="relative h-screen flex">
+            {/* Green background half */}
+            <div className="w-1/2 bg-[#204151] "></div>
+
+            {/* Image background half */}
+            <div
+              className="w-1/2 bg-cover bg-center"
+              style={{ backgroundImage: `url(${Img})` }}
+            ></div>
+
+            {/* Overlay for text and content */}
+            <div className="absolute inset-0 flex justify-center">
+              <div className="container max-w-[1050px]">
+                <div className=" px-4 text-white z-10">
+                  {/* Heading Section */}
+                  <div className="mt-16">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-widest">
+                      Find your next dream home
+                    </h1>
+                    <p className="text-lg md:text-xl mb-8">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Nulla <br></br>
+                      facilisi. Vestibulum ante ipsum primis in faucibus orci
+                      luctus et <br></br> ultrices posuere cubilia Curae.
+                    </p>
+                  </div>
+
+                  {/* Search Section */}
+                  <div className="bg-white rounded-lg p-8 shadow-lg w-7xl mt-32">
+                    <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                      {/* Category Dropdown */}
+                      <select className="border border-gray-300 rounded px-4 py-2 w-full md:w-1/4 text-gray-700 bg-[#f6f6f6] text-semibold">
+                        <option>Category</option>
+                        <option>Residential</option>
+                        <option>Commercial</option>
+                      </select>
+
+                      {/* Property Type Dropdown */}
+                      <select className="border border-gray-300 rounded px-4 py-2 w-full md:w-1/4 text-gray-700 bg-[#f6f6f6] text-semibold">
+                        <option>Property Type</option>
+                        <option>House</option>
+                        <option>Apartment</option>
+                      </select>
+
+                      {/* Location Dropdown */}
+                      <select className="border border-gray-300 rounded px-4 py-2 w-full md:w-1/4 text-gray-700 bg-[#f6f6f6] text-semibold">
+                        <option>Location</option>
+                        <option>New York</option>
+                        <option>Los Angeles</option>
+                      </select>
+
+                      {/* Search Button */}
+                      <button className="bg-[#1f5e7d] text-white px-6 py-2 rounded-xl flex gap-4 items-center justify-center w-full md:w-1/6">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                          ></path>
+                        </svg>
+                        <span className="mr-2">Search</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Checkbox Section */}
+                  <div className="mt-6 flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        className="form-checkbox text-blue-600 w-5 h-5" // Increased width and height
+                      />
+                      <span className="ml-2">
+                        Only Properties in exclusive representation
+                      </span>
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        className="form-checkbox text-blue-600 w-5 h-5" // Increased width and height
+                      />
+                      <span className="ml-2">Only new development</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex  justify-between space-x-4 mt-[7rem]">
+                  {cardsData.map((card, index) => (
+                    <div
+                      key={index}
+                      className="border rounded-lg shadow-lg p-6 w-64 text-center bg-white flex justify-between items-center"
+                    >
+                      {/* Icon Section */}
+                      <div>
+                        <div className="flex justify-center mb-4">
+                          <div className="p-4 rounded-full">
+                            <img src={card.icon} alt="icon" />
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-lg font-semibold mb-4">
+                          {card.title}
+                        </h3>
+
+                        {/* Bottom Border Decoration */}
+                        <div className="border-t-2 border-blue-600 mx-auto w-16 mt-4"></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-evenly px-4 md:px-0">
+          {/* STORIES */}
+          <div className="images px-12 pb-4 pt-[6rem] bg-[#eef2fb]">
+            {stories?.stories?.length > 0 ? (
+              <Carousel
+                responsive={newresponsive}
+                showDots={true}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+              >
+                {stories?.stories?.map((item, index) => (
+                  <div className="relative img" key={index}>
+                    <div
+                      className="flex justify-center items-center h-[250px] cursor-pointer"
+                      onClick={() =>
+                        openModal(item?.media, item?.media?.includes(".mp4"))
+                      }
+                    >
+                      <div className="relative h-[250px] w-[200px]">
+                        {item?.media?.includes(".mp4") ? (
+                          <video
+                            src={item?.media}
+                            className="rounded-xl h-[250px] w-[200px] object-cover"
+                            alt="Media Thumbnail"
+                            muted
+                          />
+                        ) : (
+                          <img
+                            src={item?.media}
+                            alt="Media Thumbnail"
+                            className="rounded-xl h-[250px] w-[200px] object-cover"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center">
+                          <span className="text-white text-sm text-center font-semibold">
+                            {item?.content || "Title"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              <div className="flex justify-center items-center h-[250px]">
+                <p>No stories available</p>
+              </div>
+            )}
+          </div>
+          <div className="flex justify-evenly px-4 md:px-0 bg-[#eef2fb]">
             <div className="container max-w-[1200px] mt-16">
               <p className="font-bold text-[28px] text-[#1B8693] pb-2">
                 {" "}
@@ -432,282 +662,129 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
                   </MultiCarousel>
                 </div>
               </div>
-              <div className="mt-16 rounded-xl py-4">
-                <p className="font-bold text-[28px] mb-6 text-[#1B8693] pb-2">
-                  {" "}
-                  <FormattedMessage id="Live Streaming" />
-                </p>
 
-                <div className="flex justify-center mt-4">
-                  {/* <video width="640" height="360" controls>
+              <LiveStreamingSection />
+              <div className="flex justify-center mt-4">
+                {/* <video width="640" height="360" controls>
                     <source src="video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video> */}
-                  {/* <LiveStream /> */}
-                </div>
-
-                <div className="">
-                  <p className="text-center font-semibold text-[13px]">
-                    {" "}
-                    <FormattedMessage id="Your-Live-Streaming-Only-For-5-Minutes" />{" "}
-                  </p>
-                  <div className="flex justify-center mt-4">
-                    <button
-                      className="bg-gradient-to-b from-blue-500 to-indigo-600  hover:bg-blue-700 text-white text-[14px] font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
-                      type="button"
-                    >
-                      <i className="fa fa-rss mr-2"></i>
-                      <FormattedMessage id="live" />
-                    </button>
-                  </div>
-                </div>
+                {/* <LiveStream /> */}
               </div>
 
               {/*News For You Card */}
               <div>
-                <div className="flex justify-between items-center mt-16  mb-3">
-                  <p className="font-bold text-[12px]">
-                    <FormattedMessage id="news" />
-                  </p>
-                  <p className="font-bold text-[28px] text-[#1B8693]">
-                    {" "}
-                    <FormattedMessage id="News-For-You" />
-                  </p>
-                  <p className="text-[#1B8693] text-[12px] font-semibold">
-                    <FormattedMessage id="View-All" />
-                  </p>
+                <div className="flex justify-between items-center mb-6 mt-[4rem]">
+                  <h2 className="text-4xl font-bold">News recommendation</h2>
+                  <a href="#" className="text-blue-600 flex items-center">
+                    Explore All
+                  </a>
                 </div>
               </div>
-              <div className="grid md:grid-cols-3 grid-cols-1  gap-6">
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
+              <div className="grid md:grid-cols-4 gap-3 grid-cols-1 ">
+                <div class="max-w-xs mt-4 rounded-xl bg-white h-[420px]">
+                  <div className="p-2">
                     <div className="flex justify-center">
-                      <img className="w-full" src={Img6} />
+                      <img className=" rounded h-[220px]" src={Img6} />
                     </div>
                   </div>
-                  <div class="p-5 text-center bg-[#1f5e7c] text-white">
-                    <h5 class="mb-1 text-[16px] font-semibold tracking-tight">
-                      Lorem ipsum dolor
+                  <div class="px-5 text-black">
+                    <h5 class="mb-1 text-[14px] font-semibold tracking-tight text-[#3652f0]">
+                      Technology
                     </h5>
-                    <h5 class="mb-1 text-[16px] text-[#6c889b] font-bold tracking-tight">
-                      April 24 2024 - 5 min read
-                    </h5>
-                    <h5 class=" text-[16px] font-semibold tracking-tight ">
-                      sit amet, consectetur adipiscing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
+                    <h5 class="mb-1 text-[16px]  font-semibold tracking-tight">
+                      The Impact of Technology on the Workplace: How Technology
+                      is Changing
                     </h5>
                   </div>
                 </div>
-
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="">
+                <div class="max-w-xs mt-4 rounded-xl bg-white h-[420px]">
+                  <div className="p-2">
                     <div className="flex justify-center">
-                      <img className="w-full" src={Img7} />
+                      <img className=" rounded h-[220px]" src={Img7} />
                     </div>
                   </div>
-                  <div class="p-5 text-center bg-[#1f5e7c] text-white">
-                    <h5 class="mb-1 text-[16px] font-semibold tracking-tight">
-                      Lorem ipsum dolor
+                  <div class="px-5 text-black">
+                    <h5 class="mb-1 text-[14px] font-semibold tracking-tight text-[#3652f0]">
+                      Technology
                     </h5>
-                    <h5 class="mb-1 text-[16px] text-[#6c889b] font-bold tracking-tight">
-                      April 24 2024 - 5 min read
-                    </h5>
-                    <h5 class=" text-[16px] font-semibold tracking-tight ">
-                      sit amet, consectetur adipiscing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
+                    <h5 class="mb-1 text-[16px]  font-semibold tracking-tight">
+                      The Impact of Technology on the Workplace: How Technology
+                      is Changing
                     </h5>
                   </div>
                 </div>
-                <div
-                  class="max-w-sm mt-4 rounded-xl"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className=" ">
+                <div class="max-w-xs mt-4 rounded-xl bg-white h-[420px]">
+                  <div className="p-2">
                     <div className="flex justify-center">
-                      <img className="w-full" src={Img8} />
+                      <img className=" rounded h-[220px]" src={Img8} />
                     </div>
                   </div>
-                  <div class="p-5 text-center bg-[#1f5e7c] text-white">
-                    <h5 class="mb-1 text-[16px] font-semibold tracking-tight">
-                      Lorem ipsum dolor
+                  <div class="px-5 text-black">
+                    <h5 class="mb-1 text-[14px] font-semibold tracking-tight text-[#3652f0]">
+                      Technology
                     </h5>
-                    <h5 class="mb-1 text-[16px] text-[#6c889b] font-bold tracking-tight">
-                      April 24 2024 - 5 min read
+                    <h5 class="mb-1 text-[16px]  font-semibold tracking-tight">
+                      The Impact of Technology on the Workplace: How Technology
+                      is Changing
                     </h5>
-                    <h5 class=" text-[16px] font-semibold tracking-tight ">
-                      sit amet, consectetur adipiscing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
+                  </div>
+                </div>
+                <div class="max-w-xs mt-4 rounded-xl bg-white h-[420px]">
+                  <div className="p-2">
+                    <div className="flex justify-center">
+                      <img className=" rounded h-[220px]" src={Img9} />
+                    </div>
+                  </div>
+                  <div class="px-5 text-black">
+                    <h5 class="mb-1 text-[14px] font-semibold tracking-tight text-[#3652f0]">
+                      Technology
+                    </h5>
+                    <h5 class="mb-1 text-[16px]  font-semibold tracking-tight">
+                      The Impact of Technology on the Workplace: How Technology
+                      is Changing
                     </h5>
                   </div>
                 </div>
               </div>
-
+              <OurServicesSection />
               {/*Homes For You Card */}
-              <div className=" text-center mt-16  mb-3">
-                <p className="font-bold text-[28px] text-[#1B8693]">
-                  <FormattedMessage id="homes.for.you" />
-                </p>
-                <p className=" font-semibold">
-                  <FormattedMessage id="dream.property.seller" />
-                </p>
+              <div className="flex justify-between items-center mb-6 mt-[4rem]">
+                <h2 className="text-4xl font-bold">Best recommendation</h2>
+                <a href="#" className="text-blue-600 flex items-center">
+                  Explore All
+                </a>
               </div>
-              {useGetAdDetails.loading ? (
-                <div className="flex justify-center">
-                  <BallTriangle
-                    height={50}
-                    width={50}
-                    radius={5}
-                    color="blue"
-                    ariaLabel="ball-triangle-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
-                  />
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mt-16">
-                  {useGetAdDetails?.propertAds?.postAdvertisements
-                    ?.slice(0, 3)
-                    .map((item) => (
-                      <div
-                        class="max-w-sm mt-4 rounded-xl cursor-pointer"
-                        style={{ boxShadow: shadow }}
-                        onClick={() => navigate("/property-listing")}
-                      >
-                        <div className="">
-                          <div className="flex justify-center">
-                            <img className="w-full" src={Img9} />
-                          </div>
-                        </div>
-                        <div class="p-5">
-                          <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                            {item.price} $
-                          </h5>
-                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight">
-                            {item.title}
-                          </h5>
-                          <div class="star-rating flex gap-1 mt-2 items-center">
-                            {item.description}
-                          </div>
-                          <h5 class="mb-1 mt-2 text-[12px] font-semibold tracking-tight text-[#f7c300]">
-                            {item.location}
-                          </h5>
-                        </div>
-                        <div className="flex justify-between px-5 mb-2">
-                          <div className="flex gap-2 items-center">
-                            <div>
-                              <img src={Img3} alt="abc" />
-                              <p className="font-bold text-[12px]">
-                                <FormattedMessage id="Bedroom" />
-                              </p>
-                            </div>
-                            <p className="font-bold text-[12px]">
-                              {item.bedrooms}
-                            </p>
-                          </div>
 
-                          <div className="flex gap-2 items-center">
-                            <div>
-                              <img src={Img4} alt="abc" />
-                              <p className="font-bold text-[12px]">
-                                <FormattedMessage id="Washroom" />
-                              </p>
-                            </div>
-                            <p className="font-bold text-[12px]">
-                              {item.bathrooms}
-                            </p>
-                          </div>
-                          <div className="flex gap-2 items-center">
-                            <div>
-                              <img src={Img5} alt="abc" />
-                              <p className="font-bold text-[12px]">
-                                <FormattedMessage id="home.area" />
-                              </p>
-                            </div>
-                            <p className="font-bold text-[12px]">
-                              {item.area} Sqft
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              )}
-
-              {/* <p className="text-[#1B8693] text-center text-[15px] font-bold mt-4">
-                <FormattedMessage id="more" />
-              </p> */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {properties.map((property) => (
+                  <PropertyCard key={property.id} property={property} />
+                ))}
+              </div>
 
               {/*Cars For You Card */}
-              <div className=" text-center mt-16  mb-3">
-                <p className="font-bold text-[28px] text-[#1B8693]">
-                  <FormattedMessage id="cars.for.you" />
-                </p>
-                <p className=" font-semibold">
-                  <FormattedMessage id="dream.car.seller" />
-                </p>
+              <div className="flex justify-between items-center mb-6 mt-[4rem]">
+                <h2 className="text-4xl font-bold">Best recommendation</h2>
+                <a href="#" className="text-blue-600 flex items-center">
+                  Explore All
+                </a>
               </div>
-              {useGetAdDetails.loading ? (
-                <div className="flex justify-center">
-                <BallTriangle
-                  height={50}
-                  width={50}
-                  radius={5}
-                  color="blue"
-                  ariaLabel="ball-triangle-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                />
-                </div>
-              ) : (
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-16">
-                  {useGetAdDetails?.carAd?.carAdvertisements
-                    .slice(0, 3)
-                    .map((item) => (
-                      <div
-                        class="max-w-sm mt-4 rounded-xl hover:border cursor-pointer"
-                        style={{ boxShadow: shadow }}
-                      >
-                        <div className="">
-                          <div className="flex justify-center">
-                            <img className="w-full" src={Img6} />
-                          </div>
-                        </div>
-                        <div class="p-5">
-                          <h5 class="mb-1 text-[16px] font-bold tracking-tight">
-                            $ {item.price}
-                          </h5>
-                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
-                            {item.make} {item.model} {item.year}
-                          </h5>
-                          <h5 class="mb-1 text-[12px] mt-2 font-semibold tracking-tight uppercase">
-                            {item.transmission}
-                          </h5>
-                          <div class="star-rating flex gap-1 mt-2 items-center">
-                            <svg
-                              class="star-icon w-5 h-5"
-                              fill="#f7c300"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M10 2l2.5 6h6l-5 4.5 2 6-5.5-4.5-5.5 4.5 2-6-5-4.5h6z" />
-                            </svg>
-                            <span class="rating-text text-[12px]">
-                              4.5 (415 reviews)
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              )}
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                {cars.map((property) => (
+                  <CarsCard key={property.id} property={property} />
+                ))}
+              </div>
+              <div className="flex justify-between items-center mb-6 mt-[4rem]">
+                <h2 className="text-4xl font-bold">Best recommendation</h2>
+                <a href="#" className="text-blue-600 flex items-center">
+                  Explore All
+                </a>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                {furniture.map((property) => (
+                  <FurnitureCard key={property.id} property={property} />
+                ))}
+              </div>
               <p
                 className=" mb-5 text-[#1B8693] text-center text-[15px] font-bold mt-4 cursor-pointer hover:underline"
                 onClick={() => navigate("/car-listing")}
@@ -716,30 +793,14 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
               </p>
             </div>
           </div>
-          <div className="our services">
-            <OurServices locale={locale} />
-          </div>
-
-          {/* Multi Carousel */}
-          <div className="multiCarousel">
-            <MultiCarouselHome locale={locale} />
-          </div>
 
           {/* About Search */}
 
-          <div className="about-search px-12 mb-12">
-            <div className=" text-start mt-16 px-2  mb-3">
-              <p className="font-bold text-[28px] text-[#1B8693]">
-                <FormattedMessage id="about.search" />{" "}
-              </p>
-              <p className="">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                <br></br>
-                sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim <br></br> veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea <br></br>{" "}
-                commodo consequat. 
-              </p>
+          <WhyChooseUs />
+          <div className="flex justify-evenly px-4 md:px-0 bg-[#eef2fb]">
+            <div className="container max-w-[1200px] mt-16">
+              <BlogSection />
+              <TestimonialSection/>
             </div>
           </div>
           {modalIsOpen && (
