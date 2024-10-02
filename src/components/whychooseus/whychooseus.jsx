@@ -41,9 +41,9 @@ const WhyChooseUs = () => {
         <div className="relative w-1/2 flex justify-end">
           <div>
             <img src={Img} alt="Property" className="rounded-lg h-[350px]" />
-            <div className="absolute top-[25px] left-[56px]  rounded-lg  h-[400px] w-[380px]">
+            <div className="absolute top-[25px] left-[126px]   h-[400px] w-[380px]">
               <div className=" mb-1">
-                <img className="" src={Img1} alt="abc" />
+                <img className="rounded-xl" src={Img1} alt="abc" />
               </div>
             </div>
           </div>

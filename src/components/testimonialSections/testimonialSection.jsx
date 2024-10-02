@@ -25,7 +25,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section className="relative">
+    <section className="relative mb-[14rem]">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -41,7 +41,9 @@ const TestimonialSection = () => {
           See what our customers said about us
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-16">
+
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative top-24">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-lg shadow-md p-6 ">
               <div className="flex items-center mb-4">
@@ -60,7 +62,6 @@ const TestimonialSection = () => {
             </div>
           ))}
         </div>
-      </div>
     </section>
   );
 };

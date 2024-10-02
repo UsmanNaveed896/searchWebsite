@@ -15,9 +15,6 @@ import Img10 from "../../assets/Group9.svg";
 import Img11 from "../../assets/Group 10.svg";
 import Img12 from "../../assets/Group 11.svg";
 import Img13 from "../../assets/Group 12.png";
-
-import OurServices from "./ourservices";
-import MultiCarouselHome from "./multi-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import { messagesEn } from "../../localization/messagesEn";
 import { messagesFr } from "../../localization/messagesFr";
@@ -57,10 +54,10 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
     setModalIsOpen(false);
     setSelectedMedia(null);
   };
-  useEffect(() => {
-    useGetAdDetails.getCarAds();
-    useGetAdDetails.getPropertyAds();
-  }, []);
+  // useEffect(() => {
+  //   useGetAdDetails.getCarAds();
+  //   useGetAdDetails.getPropertyAds();
+  // }, []);
   const cardsData = [
     {
       title: "Home inspections",
@@ -79,8 +76,7 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
       icon: Img13,
     },
   ];
-  const shadow =
-    "4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px 4px 6.3px 0px rgba(255, 255, 255, 0.50), 0px -2px 4px 0px rgba(0, 0, 0, 0.25)";
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -115,19 +111,19 @@ const Homepage = ({ locale, showPopup, setShowPopup }) => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const getAllStories = async () => {
-    try {
-      const response = await axios.get(
-        "https://searchapi.codematesolution.com/api/v1/stories"
-      );
-      setStories(response?.data?.data);
-    } catch (error) {
-      console.error("Error fetching stories:", error);
-    }
-  };
-  useEffect(() => {
-    getAllStories();
-  }, []);
+  // const getAllStories = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://searchapi.codematesolution.com/api/v1/stories"
+  //     );
+  //     setStories(response?.data?.data);
+  //   } catch (error) {
+  //     console.error("Error fetching stories:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getAllStories();
+  // }, []);
   const properties = [
     {
       id: 1,
